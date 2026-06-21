@@ -45,3 +45,13 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
 - **Evidence:** `make validate` → 49 checks pass; `CONTRIBUTING.md` added and linked from README.
 - **Commit:** `bc4b328`
 - **Ship?** [ ] yes [ ] hold
+
+
+## Cycle 5 — SI-007 · README polish (badge, TOC, guarantees)
+- **Category:** ux · **Persona/journey:** Operator, Gatekeeper / J1
+- **Impact:** the front door now surfaces the differentiators — CI status badge, a navigable
+  table of contents, and an explicit "Zero-infra, no-egress" + bounded-autonomy guarantees
+  section that the Operator and (especially) Gatekeeper personas evaluate on.
+- **Evidence:** `make validate` → 49 checks pass; badge points at the validate workflow; TOC anchors resolve.
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold

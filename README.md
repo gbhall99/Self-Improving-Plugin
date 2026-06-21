@@ -1,5 +1,7 @@
 # self-improve
 
+[![validate-plugin](https://github.com/gbhall99/Self-Improving-Plugin/actions/workflows/validate.yml/badge.svg)](https://github.com/gbhall99/Self-Improving-Plugin/actions/workflows/validate.yml)
+
 An **autonomous, continuous, self-improving engineering loop** as a Claude Code plugin.
 
 Point it at a repo, answer a few startup questions once, and it runs unattended for
@@ -10,6 +12,20 @@ back later, read one report, and decide what to ship.
 It is built around a simple promise: **every change it lands is bug-free, fully
 working, tested, and a genuine improvement — verified from multiple angles — and you
 always stay in control of what reaches `main`.**
+
+## Contents
+
+- [What it does](#what-it-does)
+- [Workflow](#workflow)
+- [Branch & merge model](#branch--merge-model-you-stay-in-control)
+- [How "continuous & unattended" works](#how-continuous--unattended-works)
+- [The `.self-improve/` knowledge base](#the-self-improve-knowledge-base)
+- [The specialist agents](#the-specialist-agents)
+- [Safety & guarantees](#safety--guarantees)
+- [Installation](#installation)
+- [Commands](#commands)
+- [Validation & CI](#validation--ci)
+- [Contributing](#contributing)
 
 ---
 
@@ -109,12 +125,25 @@ The loop looks at the product from many angles by dispatching purpose-built suba
 
 ---
 
-## Safety
+## Safety & guarantees
 
 - **Never** pushes or merges to `main` — that decision is always yours.
 - **Never** merges a red QA gate; an independent verifier must say GO.
 - Respects an **out-of-bounds** list (files/services/concerns it must not touch).
-- One small, independently-revertible change per cycle, with a full audit trail.
+- **Bounded autonomy:** configurable guardrails (`loop.guardrails`) — auto-pause after a
+  failure streak, a merges-per-hour rate cap, an optional spend cap, and a kill switch
+  (`/improve-stop`). "Run overnight" without waking up to chaos or a surprise bill.
+- One small, independently-revertible change per cycle, with a full audit trail in `.self-improve/`.
+
+### Zero-infra, no-egress
+
+Unlike hosted "AI engineer" services, self-improve runs **entirely inside your existing
+Claude Code install**:
+
+- **No code egress** — your repo never leaves your machine/session for a third-party VM.
+- **No extra infrastructure** — no new VMs, accounts, or seats to provision.
+- **No CI dependency** — validation runs locally too, so it works even at zero GitHub
+  Actions credit (see [Validation & CI](#validation--ci)).
 
 ---
 
