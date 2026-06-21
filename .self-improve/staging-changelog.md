@@ -80,5 +80,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   the market as input).
 - **Evidence:** `make validate` -> 50 checks pass; competitor-researcher gains a gap-ticket
   spec (dedup, cap, sourced), wired into /improve-run Phase 0.
-- **Commit:** `<pending>`
+- **Commit:** `a6ffcf4`
 - **Ship?** [ ] yes [ ] hold
