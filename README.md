@@ -150,6 +150,26 @@ Then, in the repo you want to improve:
 
 ---
 
+## Validation & CI
+
+A single script — `scripts/validate_plugin.py` (pure stdlib, no installs) — checks the
+plugin/marketplace manifests and the frontmatter of every command and agent. The **same
+script** runs in three places, so quality stays gated even if you run out of GitHub
+Actions credit:
+
+| Where | How | Needs Actions credit? |
+|---|---|---|
+| GitHub Actions | `.github/workflows/validate.yml` on push/PR | yes |
+| Locally, on demand | `make validate` | no |
+| Locally, on every push | git pre-push hook (`make install-hooks`) | no |
+
+**If you run out of Actions minutes:** nothing breaks. Run `make install-hooks` once per
+clone and the pre-push hook validates locally on every `git push` (bypass with
+`git push --no-verify`). You can also run `make validate` anytime. The workflow is also
+kept deliberately cheap — a `paths` filter so it only runs when plugin files change,
+`concurrency` to cancel superseded runs, and a single ~10s step with no install steps —
+so it sips minutes when it does run.
+
 ## Requirements
 
 - Claude Code with plugin support.
