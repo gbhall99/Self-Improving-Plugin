@@ -43,5 +43,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
 - **Impact:** contributors now have a clear path — project layout, the local validation gate,
   and how to add commands/agents with correct frontmatter — lowering the barrier to extend the plugin.
 - **Evidence:** `make validate` → 49 checks pass; `CONTRIBUTING.md` added and linked from README.
-- **Commit:** `<pending>`
+- **Commit:** `bc4b328`
 - **Ship?** [ ] yes [ ] hold
