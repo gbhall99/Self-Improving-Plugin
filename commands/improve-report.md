@@ -13,7 +13,7 @@ Read `.self-improve/config.json`, `state.json`, `staging-changelog.md`, `backlog
 
 1. **Headline** — one line: what was accomplished this run (e.g. "11 improvements shipped to staging: 4 bug fixes, 3 UX, 2 features, 2 a11y; all green").
 2. **Loop status** — current `state.json.status`, cycles completed, runtime, whether it's still scheduled to continue, and the link to the `staging → main` PR.
-3. **Ship / hold checklist** — a table of every improvement landed on staging since the last report. Columns: id, title, category, persona/journey served, impact, test/visual evidence, commit SHA, and a recommendation (Ship / Hold / Needs-review) with a one-line reason. This is the core of the report.
+3. **Ship / hold review** — the core of the report. **Group the landed improvements by the persona/journey they serve** (mirroring the `staging → main` PR body rendered from `templates/staging-pr.md`), then within each group give a table/line per item: id, title, category, impact, test/visual evidence, commit SHA, and a recommendation (Ship / Hold / Needs-review) with a one-line reason. Summarize user value, not just code.
 4. **Risk & attention** — anything that needs human judgement: items touching sensitive areas, changes that are technically green but worth a second look, anything that came close to `outOfBounds`.
 5. **Blocked / abandoned** — items the loop tried but parked, with reasons (so the user can unblock or de-scope).
 6. **Backlog ahead** — top remaining items and how long they'd likely take.
