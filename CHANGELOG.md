@@ -9,6 +9,12 @@ versioning is [SemVer](https://semver.org/) and tracks `.claude-plugin/plugin.js
 ### Added
 - Operating principle 6: prefer AI-centric, agentic solutions — wired into `/self-improve:run`,
   `/self-improve:setup`, and the feature-scout and implementer agents.
+- `make validate` also runs the official `claude plugin validate` when the CLI is present.
+
+### Fixed
+- Plugin failed `claude plugin validate` / install because `plugin.json` declared `commands`
+  and `agents` as string paths. Removed them (the directories auto-discover); the local
+  validator now rejects the non-array form so CI catches it too.
 
 ## [1.0.0] — 2026-06-21
 

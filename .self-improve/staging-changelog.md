@@ -121,3 +121,13 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   README, feature-scout, implementer; CHANGELOG updated.
 - **Commit:** `a29879c`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 13 — SI-014 · Fix plugin manifest so it installs (bug)
+- **Category:** bug · **Persona/journey:** all / J1 (install)
+- **Impact:** the plugin now passes the official `claude plugin validate` and installs cleanly;
+  previously `commands`/`agents` string paths failed the schema. Found by smoke-testing install.
+- **Evidence:** `claude plugin validate .` PASS; `claude plugin install` succeeds; all 6 commands
+  + 9 agents load. Local validator now rejects the bad form (CI-guarded); `make validate` runs
+  the official validator when the CLI is present.
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold
