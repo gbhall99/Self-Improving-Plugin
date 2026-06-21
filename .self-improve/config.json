@@ -1,0 +1,37 @@
+{
+  "product": "self-improve — a Claude Code plugin that runs a continuous, autonomous, self-improving engineering loop on any repo.",
+  "primaryGoal": "Let a product owner improve their solution unattended for hours while staying in full control of what ships to main.",
+  "commands": {
+    "install": "make install-hooks",
+    "lint": "",
+    "typecheck": "",
+    "build": "",
+    "test": "make validate",
+    "e2e": "",
+    "run": "python3 scripts/validate_plugin.py"
+  },
+  "branches": {
+    "main": "main",
+    "staging": "self-improve/staging",
+    "cyclePrefix": "self-improve/cycle-"
+  },
+  "loop": {
+    "sessionBudgetHours": 6,
+    "checkpointMinutes": 20,
+    "mergePolicy": "auto-merge-to-staging"
+  },
+  "outOfBounds": [
+    "LICENSE",
+    "Do not push or merge to main (human-gated)",
+    "Do not change the model identifier or add it to any committed artifact",
+    "Do not rename the public command set without an explicit decision (see SI-011)"
+  ],
+  "qaGate": ["test"],
+  "qaGateCommands": {
+    "test": "make validate"
+  },
+  "competitors": ["Devin (Cognition)", "GitHub Copilot coding agent", "Cursor Agents", "OpenHands", "Aider", "SWE-agent"],
+  "appType": "claude-code-plugin",
+  "notes": "No app UI to exercise; the QA gate is structural validation (manifests + command/agent frontmatter + generated state). E2E/visual scaffolding (SI-009) is N/A for this repo but applies when the plugin runs on UI products.",
+  "setupCompletedAt": "2026-06-21T10:30:18Z"
+}
