@@ -84,7 +84,7 @@ Create `.self-improve/config.json` capturing everything the loop needs:
 }
 ```
 
-Also create `.self-improve/state.json` with `{ "status": "ready", "cycle": 0, "lastReport": null }` and an empty `.self-improve/cycles/` directory (add a `.gitkeep`). Create `.self-improve/staging-changelog.md` with a header only.
+Also create `.self-improve/state.json` with `{ "status": "ready", "cycle": 0, "lastReport": null }`, an empty `.self-improve/cycles/` directory, and an empty `.self-improve/knowledge/` directory for reusable playbooks (add a `.gitkeep` to each). Create `.self-improve/staging-changelog.md` with a header only.
 
 ## Step 8 — Establish branches & commit
 

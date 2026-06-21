@@ -38,7 +38,7 @@ If the backlog has fewer than 5 actionable items, run a discovery pass to refill
 Choose the highest-value actionable item from `backlog.md`. Bias toward: P0 journey breakage and real bugs first, then high-impact UX, then competitive-gap features, then perf/a11y/tech-debt. Skip anything blocked or out of bounds. Mark it `in-progress` in the backlog.
 
 ### Phase 2 — Investigate from multiple angles
-Before writing code, look at the item through several lenses using the specialist subagents. Dispatch the relevant ones (in parallel where independent) and have them report findings, not just opinions:
+First check `.self-improve/knowledge/` for an existing **playbook** covering this area or a similar past fix — reuse its repro and verification steps instead of re-deriving them. Then look at the item through several lenses using the specialist subagents. Dispatch the relevant ones (in parallel where independent) and have them report findings, not just opinions:
 - **bug-hunter** — reproduce/locate the defect; find adjacent latent bugs.
 - **ux-reviewer** — evaluate the affected surface against the personas; is the change actually better UX?
 - **journey-tester** — confirm which user journeys this touches and how to test them.
@@ -60,6 +60,7 @@ Only when the gate is fully green:
 - **Squash-merge it into `staging`** (this is the approved `auto-merge-to-staging` policy) so each improvement is one clean, revertible commit. Delete the cycle branch.
 - Append an entry to `.self-improve/staging-changelog.md`: id, title, category, persona/journey, one-line impact, the squash commit SHA, test evidence, and a `Ship? [ ] yes [ ] hold` checkbox.
 - Move the item to `done` in `backlog.md` and write a short per-cycle log to `.self-improve/cycles/cycle-<n>.md`.
+- **Capture a playbook:** if this cycle established a reusable repro/verification (a new test harness, a way to exercise a journey, a tricky setup), write it to `.self-improve/knowledge/<slug>.md` so future cycles self-verify without re-deriving it. Update an existing playbook rather than duplicating.
 - Push `staging`.
 
 ### Phase 6 — Keep the aggregate PR fresh (the "shift report")
