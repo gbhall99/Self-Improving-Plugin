@@ -8,9 +8,12 @@ help:
 	@echo "Validation runs the same script in CI, here, and in the pre-push hook,"
 	@echo "so quality stays gated even with zero GitHub Actions minutes."
 
-# Same check CI runs. No dependencies beyond python3.
+# Same check CI runs. No dependencies beyond python3. Additionally runs the
+# official `claude plugin validate` (authoritative manifest schema) when the
+# claude CLI is available -- it is not on CI runners, so it is best-effort.
 validate:
 	@python3 scripts/validate_plugin.py
+	@command -v claude >/dev/null 2>&1 && { echo "Running official claude plugin validate..."; claude plugin validate .; } || echo "(claude CLI not found; skipping official manifest validation)"
 
 # Point git at the repo's tracked hooks. Run once per clone.
 install-hooks:

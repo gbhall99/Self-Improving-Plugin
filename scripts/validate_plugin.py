@@ -76,11 +76,19 @@ def validate_plugin_manifest() -> None:
     if data is None:
         return
     require_fields(data, ["name", "version", "description"], "plugin.json")
-    # If commands/agents dirs are declared, they must exist.
+    # `commands`/`agents` are auto-discovered from their directories. If declared
+    # explicitly they must be an ARRAY of paths (a bare string fails the official
+    # `claude plugin validate` schema), and each path must exist.
     for key in ("commands", "agents"):
-        val = data.get(key)
-        if isinstance(val, str) and not (ROOT / val).is_dir():
-            err(f"plugin.json: '{key}' points to missing dir '{val}'")
+        if key not in data:
+            continue
+        val = data[key]
+        if not isinstance(val, list):
+            err(f"plugin.json: '{key}' must be an array of paths (or omitted for auto-discovery)")
+            continue
+        for entry in val:
+            if not isinstance(entry, str) or not (ROOT / entry).exists():
+                err(f"plugin.json: '{key}' entry '{entry}' does not exist")
 
 
 def validate_marketplace_manifest() -> None:

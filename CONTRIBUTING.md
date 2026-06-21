@@ -32,6 +32,11 @@ make install-hooks      # once per clone: gate every push locally (bypass: git p
 - every `agents/*.md` has frontmatter with `name` + `description`, and `name` matches the filename
 - the generated `.self-improve/` state (`config.json`, `state.json`), when present
 - no emojis in the plugin's markdown/docs (principle 1 — use crisp iconography)
+- `commands`/`agents` are auto-discovered from their directories; do not add them as string
+  paths in `plugin.json` (the official schema rejects it — if declared they must be arrays)
+
+When the `claude` CLI is available, `make validate` also runs the authoritative
+`claude plugin validate .` so manifest schema errors are caught locally before install.
 
 All contributions must also follow the [operating principles](PRINCIPLES.md): simplify for the
 user, remove redundancy, keep docs current, and keep `features.md` / `personas.md` / `journeys.md`
