@@ -55,3 +55,12 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
 - **Evidence:** `make validate` → 49 checks pass; badge points at the validate workflow; TOC anchors resolve.
 - **Commit:** `29d513f`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 6 — SI-004 · /improve-recalibrate command
+- **Category:** ux · **Persona/journey:** Reviewer / J2
+- **Impact:** the knowledge base can now be refreshed mid-life (personas/journeys/competitors
+  drift) without a full re-setup; diffs rather than clobbers and re-prioritizes the backlog so
+  the loop keeps targeting what's true now.
+- **Evidence:** `make validate` -> 50 checks pass (new command picked up + frontmatter valid).
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold

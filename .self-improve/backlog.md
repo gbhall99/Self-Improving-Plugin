@@ -12,7 +12,7 @@ Priority score 1–10 (higher = sooner). Status: `todo` `in-progress` `done` `bl
 | SI-007 | README polish: CI badge, table of contents, no-egress/zero-infra guarantees | ux | Operator,Gatekeeper / J1 | Badge renders; TOC links resolve; guarantees section present | S | 7 | done ✓ cycle 5 |
 | SI-009 | Wire a real E2E + visual-regression gate tied to `journeys.md` | feature | Operator / J3 | journey-tester scaffolds Playwright+visual diff for UI repos and blocks staging on failure; documented | L | 7 | todo |
 | SI-002 | Competitive research → queued citable gap tickets each loop | feature | Reviewer / J2 | competitor-researcher appends structured, sourced backlog items on discovery passes | M | 6 | todo |
-| SI-004 | `/improve-recalibrate` to refresh personas/journeys/competitors | ux | Reviewer / J2 | New command re-runs research agents and diffs/updates the knowledge base | S | 6 | todo |
+| SI-004 | `/improve-recalibrate` to refresh personas/journeys/competitors | ux | Reviewer / J2 | New command re-runs research agents and diffs/updates the knowledge base | S | 6 | done ✓ cycle 6 |
 | SI-005 | Local versioned "playbooks/knowledge" of verified repros | feature | Operator / J3 | Successful fixes write repro+verify steps to `.self-improve/knowledge/`; loop reuses them | M | 5 | todo |
 | SI-010 | Add a `CHANGELOG.md` + version bump convention | tech-debt | Maintainer | Keep-a-changelog file; version policy documented | S | 4 | todo |
 | SI-011 | Consider renaming commands so they read `/self-improve:setup` not `:improve-setup` | ux | Operator / J1 | Decision recorded; if renamed, all refs/validator updated, no breakage | M | 4 | todo |
