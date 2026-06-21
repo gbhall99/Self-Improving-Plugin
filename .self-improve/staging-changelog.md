@@ -53,5 +53,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   table of contents, and an explicit "Zero-infra, no-egress" + bounded-autonomy guarantees
   section that the Operator and (especially) Gatekeeper personas evaluate on.
 - **Evidence:** `make validate` → 49 checks pass; badge points at the validate workflow; TOC anchors resolve.
-- **Commit:** `<pending>`
+- **Commit:** `29d513f`
 - **Ship?** [ ] yes [ ] hold
