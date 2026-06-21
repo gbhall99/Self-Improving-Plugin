@@ -22,6 +22,13 @@ versioning is [SemVer](https://semver.org/) and tracks `.claude-plugin/plugin.js
 - Persona/journey-grouped "shift report" PR template (`templates/staging-pr.md`).
 - Unattended safety guardrails (`loop.guardrails`): auto-pause, rate cap, spend cap, kill switch.
 - `CONTRIBUTING.md` and README polish (CI badge, table of contents, zero-infra/no-egress guarantees).
+- Competitor research files queued, citable gap tickets into the backlog on discovery passes.
+- Local versioned playbooks/knowledge (`.self-improve/knowledge/`) captured on success and reused.
+- Canonical operating principles (`PRINCIPLES.md`) enforced by commands, agents, and the QA gate:
+  no emojis (crisp iconography), simplify for the user, remove redundancy, keep docs current,
+  and document/test against features, personas, and journeys.
+- Feature catalogue (`features.md`) produced by setup and maintained by the loop.
+- QA gate now rejects emojis in the plugin's markdown/docs.
 
 ## [0.1.0] — 2026-06-21
 

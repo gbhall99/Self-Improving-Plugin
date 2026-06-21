@@ -7,6 +7,8 @@ argument-hint: "[optional: 'since <date>' or a cycle range, default: since last 
 
 Produce the briefing the user reads when they come back hours later. Be honest, concise, and decision-oriented — they will use this to choose what ships.
 
+Follow the **operating principles** (`PRINCIPLES.md`): no emojis in the report (crisp iconography / plain labels only), and frame every item against the documented features, personas, and journeys it serves.
+
 Read `.self-improve/config.json`, `state.json`, `staging-changelog.md`, `backlog.md`, and the per-cycle logs in `.self-improve/cycles/`. Look at the actual `staging` branch and the open `staging → main` PR. Respect any range in **$ARGUMENTS** (default: everything since `state.lastReport`).
 
 ## Output (in this order)

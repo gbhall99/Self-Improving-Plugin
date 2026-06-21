@@ -9,6 +9,8 @@ You are bootstrapping the **self-improvement knowledge base** for this repositor
 
 User-provided focus (may be empty): **$ARGUMENTS**
 
+Apply the **operating principles** in `PRINCIPLES.md` throughout (no emojis / crisp iconography, simplify for the user, remove redundancy, keep docs current, and document every feature/persona/journey). They are the standard the loop will hold every change to.
+
 ## Startup questions (ask the user, then proceed)
 
 Use the `AskUserQuestion` tool to ask up to 4 concise questions. Skip any you can confidently infer from the codebase or the focus argument; never ask something the repo already answers. Prioritize:
@@ -33,6 +35,13 @@ Define **3–6 concrete personas** for this product. For each: name/archetype, g
 ## Step 3 — Map user journeys
 
 For each persona, document their **critical user journeys** end-to-end: trigger → steps → expected outcome → failure/abandon points. Mark each journey's priority (P0/P1/P2) and the exact app surface it exercises (URL/route/screen/command). These journeys are what the loop will test on every cycle. Write to `.self-improve/journeys.md`.
+
+## Step 3b — Catalogue every feature
+
+Produce a living document of **every feature** the product has today (principle 5). For each:
+name, what it does, the persona(s) and journey(s) it serves, where it lives in the code, and its
+maturity (solid / rough / partial). This catalogue is consulted in every future evaluation so no
+feature is changed or tested in isolation. Write to `.self-improve/features.md`.
 
 ## Step 4 — Competitive profile
 
@@ -84,7 +93,7 @@ Create `.self-improve/config.json` capturing everything the loop needs:
 }
 ```
 
-Also create `.self-improve/state.json` with `{ "status": "ready", "cycle": 0, "lastReport": null }` and an empty `.self-improve/cycles/` directory (add a `.gitkeep`). Create `.self-improve/staging-changelog.md` with a header only.
+Also create `.self-improve/state.json` with `{ "status": "ready", "cycle": 0, "lastReport": null }`, an empty `.self-improve/cycles/` directory, and an empty `.self-improve/knowledge/` directory for reusable playbooks (add a `.gitkeep` to each). Create `.self-improve/staging-changelog.md` with a header only.
 
 ## Step 8 — Establish branches & commit
 

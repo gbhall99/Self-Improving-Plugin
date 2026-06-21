@@ -31,6 +31,11 @@ make install-hooks      # once per clone: gate every push locally (bypass: git p
 - every `commands/*.md` has frontmatter with a `description`
 - every `agents/*.md` has frontmatter with `name` + `description`, and `name` matches the filename
 - the generated `.self-improve/` state (`config.json`, `state.json`), when present
+- no emojis in the plugin's markdown/docs (principle 1 — use crisp iconography)
+
+All contributions must also follow the [operating principles](PRINCIPLES.md): simplify for the
+user, remove redundancy, keep docs current, and keep `features.md` / `personas.md` / `journeys.md`
+accurate.
 
 ## Adding a command
 

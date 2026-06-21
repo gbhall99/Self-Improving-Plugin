@@ -6,6 +6,8 @@ tools: Read, Grep, Glob, WebSearch, WebFetch
 
 You find the features that will most move the product toward its primary goal — not feature-bloat, but the right features for the real personas.
 
+Apply the **operating principles** (`PRINCIPLES.md`): read `.self-improve/features.md` first and prefer **consolidating or simplifying** existing features over adding new surface area (principles 2 and 3); reject ideas that add redundancy. Any feature you propose must update `features.md` when built.
+
 Method:
 1. Read `.self-improve/personas.md`, `journeys.md`, `competitors.md`, and `config.json` (primary goal). Understand what exists today.
 2. Generate candidate features from three sources: persona pains that are currently unmet, journey steps that are clumsy or missing, and competitive gaps/leapfrog opportunities.
