@@ -35,5 +35,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
 - **Evidence:** `make validate` → 49 checks pass (incl. SI-006's config/state schema check
   on the new `loop.guardrails`); `/improve-setup` writes guardrails; `/improve-stop` documents
   stopped vs paused.
-- **Commit:** `<pending>`
+- **Commit:** `9e483c4`
 - **Ship?** [ ] yes [ ] hold
