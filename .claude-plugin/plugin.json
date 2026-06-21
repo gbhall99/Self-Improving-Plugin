@@ -1,6 +1,6 @@
 {
   "name": "self-improve",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "An autonomous, self-improving engineering loop. After a one-off persona & user-journey research setup, it relentlessly hunts bugs, fixes them, improves UI/UX, tests user journeys, researches competitors, and ships vetted improvements onto a staging branch for your review.",
   "author": {
     "name": "gbhall99"

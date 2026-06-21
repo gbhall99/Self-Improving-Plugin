@@ -6,13 +6,19 @@ versioning is [SemVer](https://semver.org/) and tracks `.claude-plugin/plugin.js
 
 ## [Unreleased]
 
+## [1.0.0] — 2026-06-21
+
+### Changed
+- **BREAKING:** commands renamed from `/improve-*` to the namespaced `/self-improve:*`
+  (e.g. `/improve-setup` is now `/self-improve:setup`). Update any saved invocations.
+
 ### Added
-- One-off setup command (`/improve-setup`) — persona/journey/competitor research, command
+- One-off setup command (`/self-improve:setup`) — persona/journey/competitor research, command
   detection, E2E scaffolding, backlog seeding.
-- Autonomous self-scheduling loop (`/improve-run`) with full QA gate and auto-merge to
+- Autonomous self-scheduling loop (`/self-improve:run`) with full QA gate and auto-merge to
   `self-improve/staging`.
-- Review/operations commands: `/improve-report`, `/improve-status`, `/improve-stop`,
-  `/improve-recalibrate`.
+- Review/operations commands: `/self-improve:report`, `/self-improve:status`, `/self-improve:stop`,
+  `/self-improve:recalibrate`.
 - Nine specialist agents (persona-researcher, journey-mapper, competitor-researcher,
   bug-hunter, ux-reviewer, feature-scout, journey-tester, qa-verifier, implementer).
 - Plugin + marketplace manifests for one-line install.
@@ -35,5 +41,6 @@ versioning is [SemVer](https://semver.org/) and tracks `.claude-plugin/plugin.js
 ### Added
 - Initial release of the self-improve plugin.
 
-[Unreleased]: https://github.com/gbhall99/Self-Improving-Plugin/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/gbhall99/Self-Improving-Plugin/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/gbhall99/Self-Improving-Plugin/compare/v0.1.0...v1.0.0
 [0.1.0]: https://github.com/gbhall99/Self-Improving-Plugin/releases/tag/v0.1.0

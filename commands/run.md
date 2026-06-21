@@ -1,5 +1,5 @@
 ---
-description: Start (or continue) the autonomous self-improvement loop. Works one improvement cycle end-to-end — pick → implement → full QA gate (incl. E2E/visual) → auto-merge to staging — then re-arms itself to keep running unattended for hours. Summarize with /improve-report.
+description: Start (or continue) the autonomous self-improvement loop. Works one improvement cycle end-to-end — pick → implement → full QA gate (incl. E2E/visual) → auto-merge to staging — then re-arms itself to keep running unattended for hours. Summarize with /self-improve:report.
 argument-hint: "[optional: max cycles this run, or 'until <time>'. Default: run until session budget reached]"
 ---
 
@@ -8,7 +8,7 @@ argument-hint: "[optional: max cycles this run, or 'until <time>'. Default: run 
 You are the autonomous engineer for this repository. Your job is to **relentlessly and safely improve the product**, cycle after cycle, with no human intervention, and leave a clean audit trail the user can review later.
 
 First, read the knowledge base: `.self-improve/config.json`, `state.json`, `personas.md`, `journeys.md`, `features.md`, `competitors.md`, `backlog.md`, and `staging-changelog.md`. Also read `PRINCIPLES.md`.
-**If `.self-improve/config.json` is missing, STOP and tell the user to run `/improve-setup` first.**
+**If `.self-improve/config.json` is missing, STOP and tell the user to run `/self-improve:setup` first.**
 
 Honor `outOfBounds` in config at all times. Never push to `main`. Respect `$ARGUMENTS` if it limits cycles or sets an end time.
 
@@ -27,7 +27,7 @@ Read `loop.guardrails` from `config.json` and enforce it — this is what makes 
 - **Rate cap:** do not exceed `guardrails.maxMergesPerHour` (default 6) merges to staging; if hit, idle until the window resets or end the run.
 - **Spend cap:** if `guardrails.maxSpendUSD` is set, stop starting new cycles once you estimate it's reached and say so in the report.
 - **Out-of-bounds is absolute:** never touch `outOfBounds` paths/concerns even if an item seems to require it — mark the item `blocked` instead.
-If `loop.guardrails` is absent, use the defaults above. A paused run is resumed only by the user (`/improve-run`), not by self-re-arm.
+If `loop.guardrails` is absent, use the defaults above. A paused run is resumed only by the user (`/self-improve:run`), not by self-re-arm.
 
 ## The loop
 
@@ -35,7 +35,7 @@ Repeat the cycle below until one of these stops is hit, then go to **Re-arm**:
 - session budget (`loop.sessionBudgetHours`) elapsed since this run started, or
 - `$ARGUMENTS` cycle/time limit reached, or
 - the backlog is empty AND a fresh discovery pass (see Phase 0) finds nothing worthwhile, or
-- `state.json.status` is `"stopped"` (the user ran `/improve-stop`).
+- `state.json.status` is `"stopped"` (the user ran `/self-improve:stop`).
 
 Work **one item per cycle**. Small, reviewable, independently revertible changes beat big risky ones. Update `state.json` (`status: "running"`, current cycle, current item) at the start of each cycle.
 
@@ -81,13 +81,13 @@ Every `loop.checkpointMinutes` (or each cycle, whichever is longer), update `sta
 ## Re-arm (self-scheduling)
 When a stop condition is hit but the work isn't finished and the user hasn't stopped you:
 1. Update `state.json` to `{ "status": "scheduled", ... }` and refresh the aggregate PR + changelog.
-2. Schedule the next run of `/improve-run` so the loop continues unattended:
-   - Prefer the `send_later` tool (claude-code-remote MCP) if available — schedule a self check-in ~`checkpointMinutes` out that re-invokes `/improve-run`.
-   - Otherwise use the `/loop` skill to run `/improve-run` on the configured interval.
-   - If neither is available, clearly tell the user to wrap this command with `/loop <interval> /improve-run`.
+2. Schedule the next run of `/self-improve:run` so the loop continues unattended:
+   - Prefer the `send_later` tool (claude-code-remote MCP) if available — schedule a self check-in ~`checkpointMinutes` out that re-invokes `/self-improve:run`.
+   - Otherwise use the `/loop` skill to run `/self-improve:run` on the configured interval.
+   - If neither is available, clearly tell the user to wrap this command with `/loop <interval> /self-improve:run`.
 3. End the turn. Do NOT busy-wait with `sleep`.
 
-If a hard stop was reached (budget done, backlog empty, or user stopped), do NOT re-arm. Instead set `state.json.status` accordingly and tell the user to run `/improve-report`.
+If a hard stop was reached (budget done, backlog empty, or user stopped), do NOT re-arm. Instead set `state.json.status` accordingly and tell the user to run `/self-improve:report`.
 
 ## Rules
 - Never touch `outOfBounds` paths/concerns. Never push to `main`. Never merge a red gate.

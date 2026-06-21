@@ -32,15 +32,15 @@ always stay in control of what reaches `main`.**
 
 ## What it does
 
-1. **One-off setup** (`/improve-setup`) — researches your **personas**, maps the
+1. **One-off setup** (`/self-improve:setup`) — researches your **personas**, maps the
    **user journeys**, profiles your **competitors**, detects your build/test/run
    commands, scaffolds **E2E/visual testing** (Playwright) if missing, and writes a
    `.self-improve/` knowledge base plus a prioritized backlog.
-2. **Autonomous loop** (`/improve-run`) — works one improvement per cycle:
+2. **Autonomous loop** (`/self-improve:run`) — works one improvement per cycle:
    pick → investigate from multiple angles → implement with tests → **full QA gate
    (lint, typecheck, build, unit tests, E2E/visual)** → auto-merge onto a staging
    branch → re-arm itself and keep going.
-3. **Review on your schedule** (`/improve-report`) — a ship/hold briefing of
+3. **Review on your schedule** (`/self-improve:report`) — a ship/hold briefing of
    everything that landed, with evidence, so you choose what merges to `main`.
 
 You never have to touch the session in between. Walk away, come back in 5–6 hours,
@@ -51,12 +51,12 @@ read the report, and merge what you like.
 ## Workflow
 
 ```
-/improve-setup     # once per repo — personas, journeys, competitors, config, backlog
-/improve-run       # start the autonomous loop (self-schedules to keep running)
+/self-improve:setup     # once per repo — personas, journeys, competitors, config, backlog
+/self-improve:run       # start the autonomous loop (self-schedules to keep running)
    …hours pass, you're away…
-/improve-status    # (optional) quick glance at progress
-/improve-report    # summary + ship/hold decisions when you return
-/improve-stop      # stop cleanly anytime
+/self-improve:status    # (optional) quick glance at progress
+/self-improve:report    # summary + ship/hold decisions when you return
+/self-improve:stop      # stop cleanly anytime
 ```
 
 ---
@@ -76,7 +76,7 @@ self-improve/cycle-*  ← short-lived per-improvement branch. QA gate must be gr
   re-checked by the `qa-verifier` agent).
 - There is always exactly one open **`staging → main` PR** — your review surface. The
   loop keeps its body updated with a ship/hold checklist. **You** merge it (everything),
-  or cherry-pick the commits you want (selective). `/improve-report` gives you the exact
+  or cherry-pick the commits you want (selective). `/self-improve:report` gives you the exact
   commands.
 
 ---
@@ -84,12 +84,12 @@ self-improve/cycle-*  ← short-lived per-improvement branch. QA gate must be gr
 ## How "continuous & unattended" works
 
 The loop is **self-scheduling**. After each batch of cycles it re-arms the next run of
-`/improve-run` (via the session's scheduler, e.g. `send_later`, or the `/loop` skill)
+`/self-improve:run` (via the session's scheduler, e.g. `send_later`, or the `/loop` skill)
 and ends its turn — no busy-waiting. It keeps going until the session budget is reached,
-the backlog is exhausted, or you run `/improve-stop`. Configure cadence and runtime in
+the backlog is exhausted, or you run `/self-improve:stop`. Configure cadence and runtime in
 `.self-improve/config.json` (`loop.sessionBudgetHours`, `loop.checkpointMinutes`).
 
-> Tip: for a fully hands-off run you can also wrap it yourself: `/loop 20m /improve-run`.
+> Tip: for a fully hands-off run you can also wrap it yourself: `/loop 20m /self-improve:run`.
 
 ---
 
@@ -146,7 +146,7 @@ The loop looks at the product from many angles by dispatching purpose-built suba
 - Respects an **out-of-bounds** list (files/services/concerns it must not touch).
 - **Bounded autonomy:** configurable guardrails (`loop.guardrails`) — auto-pause after a
   failure streak, a merges-per-hour rate cap, an optional spend cap, and a kill switch
-  (`/improve-stop`). "Run overnight" without waking up to chaos or a surprise bill.
+  (`/self-improve:stop`). "Run overnight" without waking up to chaos or a surprise bill.
 - One small, independently-revertible change per cycle, with a full audit trail in `.self-improve/`.
 
 ### Zero-infra, no-egress
@@ -173,8 +173,8 @@ This repository is itself a Claude Code plugin marketplace.
 Then, in the repo you want to improve:
 
 ```text
-/improve-setup
-/improve-run
+/self-improve:setup
+/self-improve:run
 ```
 
 (You can also point `/plugin marketplace add` at a local clone path.)
@@ -185,12 +185,12 @@ Then, in the repo you want to improve:
 
 | Command | What it does |
 |---|---|
-| `/improve-setup` | One-off: research personas & journeys, profile competitors, detect commands, scaffold E2E, seed backlog |
-| `/improve-run` | Start/continue the autonomous, self-scheduling improvement loop |
-| `/improve-status` | Quick read-only progress snapshot |
-| `/improve-report` | Summary + ship/hold review of what landed on staging |
-| `/improve-recalibrate` | Refresh personas/journeys/features/competitors without a full re-setup |
-| `/improve-stop` | Stop the loop cleanly and cancel any scheduled re-arm |
+| `/self-improve:setup` | One-off: research personas & journeys, profile competitors, detect commands, scaffold E2E, seed backlog |
+| `/self-improve:run` | Start/continue the autonomous, self-scheduling improvement loop |
+| `/self-improve:status` | Quick read-only progress snapshot |
+| `/self-improve:report` | Summary + ship/hold review of what landed on staging |
+| `/self-improve:recalibrate` | Refresh personas/journeys/features/competitors without a full re-setup |
+| `/self-improve:stop` | Stop the loop cleanly and cancel any scheduled re-arm |
 
 ---
 

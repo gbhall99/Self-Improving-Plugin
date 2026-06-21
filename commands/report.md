@@ -26,6 +26,6 @@ Read `.self-improve/config.json`, `state.json`, `staging-changelog.md`, `backlog
 End with clear, copy-pasteable instructions for the user:
 - To ship **everything**: merge the `staging → main` PR.
 - To ship **selected** items only: list the squash commit SHAs and give the exact `git cherry-pick`/revert sequence (or instruct the user to reply with the ids to keep and offer to prepare a `self-improve/ship-<date>` branch containing only those).
-- To **continue** improving: `/improve-run`. To **pause**: `/improve-stop`.
+- To **continue** improving: `/self-improve:run`. To **pause**: `/self-improve:stop`.
 
 After producing the report, update `state.json.lastReport` to now. Do not merge anything to `main` yourself.

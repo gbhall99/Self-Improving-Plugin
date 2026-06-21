@@ -5,7 +5,7 @@ argument-hint: "[optional: short product description or focus, e.g. 'B2B invoici
 
 # Self-Improve · Setup (run once per repo)
 
-You are bootstrapping the **self-improvement knowledge base** for this repository. This is a one-time, foundational pass. Everything the autonomous loop (`/improve-run`) does later depends on the quality of what you produce here, so be rigorous and concrete — no vague placeholders.
+You are bootstrapping the **self-improvement knowledge base** for this repository. This is a one-time, foundational pass. Everything the autonomous loop (`/self-improve:run`) does later depends on the quality of what you produce here, so be rigorous and concrete — no vague placeholders.
 
 User-provided focus (may be empty): **$ARGUMENTS**
 
@@ -105,6 +105,6 @@ Also create `.self-improve/state.json` with `{ "status": "ready", "cycle": 0, "l
 
 Print a concise summary: personas count, journeys (with P0 list), competitor gaps to attack first, top 5 backlog items, the QA gate command, and the exact command to start the autonomous loop:
 
-> Run `/improve-run` to begin the autonomous self-improvement loop. Come back later and run `/improve-report` to review what shipped to `self-improve/staging`.
+> Run `/self-improve:run` to begin the autonomous self-improvement loop. Come back later and run `/self-improve:report` to review what shipped to `self-improve/staging`.
 
 Do not begin implementing backlog items in this command — setup only.
