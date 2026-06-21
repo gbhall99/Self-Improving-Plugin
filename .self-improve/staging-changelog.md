@@ -23,5 +23,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   the top competitive gap (no rival summarizes user value).
 - **Evidence:** `make validate` → 49 checks pass; new `templates/staging-pr.md` wired into
   `/improve-run` Phase 6 and `/improve-report`. (This very PR body is rendered from it.)
-- **Commit:** `<pending>`
+- **Commit:** `ae3a6a0`
 - **Ship?** [ ] yes [ ] hold
