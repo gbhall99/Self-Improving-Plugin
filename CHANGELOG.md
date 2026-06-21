@@ -6,6 +6,10 @@ versioning is [SemVer](https://semver.org/) and tracks `.claude-plugin/plugin.js
 
 ## [Unreleased]
 
+### Added
+- Operating principle 6: prefer AI-centric, agentic solutions — wired into `/self-improve:run`,
+  `/self-improve:setup`, and the feature-scout and implementer agents.
+
 ## [1.0.0] — 2026-06-21
 
 ### Changed

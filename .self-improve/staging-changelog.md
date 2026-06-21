@@ -111,3 +111,13 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
 - **Evidence:** `make validate` -> 70 checks pass; no stale `/improve-*` refs remain in current docs.
 - **Commit:** `a9ef637`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 12 — SI-013 · Principle 6: prefer AI-centric, agentic solutions
+- **Category:** feature · **Persona/journey:** all / all
+- **Impact:** the loop now defaults to AI-native, agentic solutions where they genuinely serve
+  the user better (NL intent, adaptive behaviour, automated multi-step work, tool/agent use,
+  latest capable models), with a reliable fallback and no gimmicky AI.
+- **Evidence:** `make validate` -> 70 checks pass; principle 6 wired into run/setup standards,
+  README, feature-scout, implementer; CHANGELOG updated.
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold

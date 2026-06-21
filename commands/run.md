@@ -19,6 +19,7 @@ These are part of the definition of done for every cycle; a change that violates
 3. **Remove redundancy** — delete duplicated/dead code and overlapping features; consolidate before adding; leave the codebase cleaner.
 4. **Keep documentation current** — update affected docs in the same change; stale docs block GO.
 5. **Document & test against features/personas/journeys** — every change must serve a documented persona, advance a documented journey, and keep `features.md` current; every evaluation considers all three.
+6. **Prefer AI-centric, agentic solutions** — default to AI-native/agentic designs (natural-language intent, adaptive behaviour, automated multi-step work, tool/agent use, latest capable models) where they genuinely serve the persona better; reject gimmicky AI and always keep a reliable fallback.
 
 ## Guardrails (check before and during every cycle)
 Read `loop.guardrails` from `config.json` and enforce it — this is what makes "leave it running for hours" safe:

@@ -104,6 +104,8 @@ they are part of the definition of done and the QA gate enforces what it can:
 4. **Keep documentation current** — docs are updated in the same change; stale docs block GO.
 5. **Document & test against features/personas/journeys** — `features.md`, `personas.md`, and
    `journeys.md` are always maintained, and every evaluation considers all three.
+6. **Prefer AI-centric, agentic solutions** — default to AI-native, agentic designs where they
+   genuinely serve the user better, with the latest capable models and a reliable fallback.
 
 ## The `.self-improve/` knowledge base
 

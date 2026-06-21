@@ -9,7 +9,7 @@ You are bootstrapping the **self-improvement knowledge base** for this repositor
 
 User-provided focus (may be empty): **$ARGUMENTS**
 
-Apply the **operating principles** in `PRINCIPLES.md` throughout (no emojis / crisp iconography, simplify for the user, remove redundancy, keep docs current, and document every feature/persona/journey). They are the standard the loop will hold every change to.
+Apply the **operating principles** in `PRINCIPLES.md` throughout (no emojis / crisp iconography, simplify for the user, remove redundancy, keep docs current, document every feature/persona/journey, and prefer AI-centric, agentic solutions). They are the standard the loop will hold every change to. When seeding the backlog, actively look for AI-native/agentic opportunities (principle 6) for the personas, not only conventional fixes.
 
 ## Startup questions (ask the user, then proceed)
 

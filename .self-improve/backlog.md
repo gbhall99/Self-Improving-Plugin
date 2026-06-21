@@ -19,6 +19,8 @@ Priority score 1–10 (higher = sooner). Status: `todo` `in-progress` `done` `bl
 
 | SI-012 | Bake in operating principles (no emoji/crisp icons, simplify, de-dup, docs current, document+test features/personas/journeys) + features.md + emoji QA check | feature | all / all | PRINCIPLES.md wired into commands+agents; features.md produced; validator rejects emojis; docs current | M | 9 | done ✓ cycle 10 |
 
+| SI-013 | Principle 6: prefer AI-centric, agentic solutions | feature | all / all | PRINCIPLES.md gains principle 6; wired into run/setup standards + feature-scout + implementer; docs current | S | 8 | done ✓ cycle 12 |
+
 ## Notes
 - Bias order: P0 journey breakage & real bugs → high-impact UX → competitive-gap features → perf/a11y/tech-debt.
 - SI-006 selected for cycle 1 (testable code, strengthens the plugin's own QA gate — on-theme self-improvement).

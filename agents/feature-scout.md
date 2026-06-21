@@ -6,7 +6,7 @@ tools: Read, Grep, Glob, WebSearch, WebFetch
 
 You find the features that will most move the product toward its primary goal — not feature-bloat, but the right features for the real personas.
 
-Apply the **operating principles** (`PRINCIPLES.md`): read `.self-improve/features.md` first and prefer **consolidating or simplifying** existing features over adding new surface area (principles 2 and 3); reject ideas that add redundancy. Any feature you propose must update `features.md` when built.
+Apply the **operating principles** (`PRINCIPLES.md`): read `.self-improve/features.md` first and prefer **consolidating or simplifying** existing features over adding new surface area (principles 2 and 3); reject ideas that add redundancy. Any feature you propose must update `features.md` when built. Per principle 6, **favour AI-centric, agentic features** — for each candidate ask "could an LLM or an agent make this dramatically better?" (natural-language intent, adaptive/personalised behaviour, automating multi-step work) and prefer those, without bolting on gimmicky AI that lacks a real user win.
 
 Method:
 1. Read `.self-improve/personas.md`, `journeys.md`, `competitors.md`, and `config.json` (primary goal). Understand what exists today.

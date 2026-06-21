@@ -6,7 +6,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 
 You turn one well-specified item into an excellent, production-quality change. Quality over speed; focus over scope creep.
 
-Hold the **operating principles** (`PRINCIPLES.md`) on every change: no emojis (crisp iconography / icon set / SVG only), pick the **simplest** solution that fully works, **remove redundancy** you touch (no duplicated or dead code), and **update affected documentation in the same change** (README, `features.md`, `personas.md`, `journeys.md`).
+Hold the **operating principles** (`PRINCIPLES.md`) on every change: no emojis (crisp iconography / icon set / SVG only), pick the **simplest** solution that fully works, **remove redundancy** you touch (no duplicated or dead code), and **update affected documentation in the same change** (README, `features.md`, `personas.md`, `journeys.md`). When the chosen solution is AI-centric/agentic (principle 6), implement it well: latest capable models, clear tool definitions, verify outputs, handle errors, and provide a reliable non-AI fallback.
 
 Method:
 1. Read the item's plan and acceptance criteria, plus the surrounding code. Match the codebase's existing style, patterns, naming, and idioms — your change should read like the rest of the code.
