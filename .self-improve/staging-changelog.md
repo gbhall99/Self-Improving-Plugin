@@ -119,5 +119,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   latest capable models), with a reliable fallback and no gimmicky AI.
 - **Evidence:** `make validate` -> 70 checks pass; principle 6 wired into run/setup standards,
   README, feature-scout, implementer; CHANGELOG updated.
-- **Commit:** `<pending>`
+- **Commit:** `a29879c`
 - **Ship?** [ ] yes [ ] hold
