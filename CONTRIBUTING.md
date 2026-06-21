@@ -66,4 +66,8 @@ make install-hooks      # once per clone: gate every push locally (bypass: git p
 
 ## Releasing
 
-Bump `version` in `.claude-plugin/plugin.json` (and `marketplace.json` metadata) using semver.
+1. Move the relevant `[Unreleased]` notes in [CHANGELOG.md](CHANGELOG.md) under a new version heading.
+2. Bump `version` in `.claude-plugin/plugin.json` (and `marketplace.json` metadata) using
+   [SemVer](https://semver.org/) — patch for fixes, minor for new commands/agents, major for
+   breaking changes (e.g. renaming or removing a command).
+3. Tag the release `vX.Y.Z`.

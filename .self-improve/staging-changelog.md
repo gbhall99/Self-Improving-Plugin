@@ -64,3 +64,11 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
 - **Evidence:** `make validate` -> 50 checks pass (new command picked up + frontmatter valid).
 - **Commit:** `1c92256`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 7 — SI-010 · CHANGELOG.md + SemVer release policy
+- **Category:** tech-debt · **Persona/journey:** Maintainer
+- **Impact:** releases are now trackable and predictable — a keep-a-changelog file and a
+  documented version-bump/tag procedure.
+- **Evidence:** `make validate` -> 50 checks pass; CHANGELOG.md added, CONTRIBUTING release steps updated.
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold
