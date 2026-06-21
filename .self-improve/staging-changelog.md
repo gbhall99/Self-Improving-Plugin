@@ -72,3 +72,13 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
 - **Evidence:** `make validate` -> 50 checks pass; CHANGELOG.md added, CONTRIBUTING release steps updated.
 - **Commit:** `c06e6fa`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 8 — SI-002 · Competitor research → queued citable gap tickets
+- **Category:** feature · **Persona/journey:** Reviewer / J2
+- **Impact:** competitive catch-up becomes continuous and automatic — the loop turns the
+  market into queued, sourced backlog items, closing the gap rivals leave open (none ingests
+  the market as input).
+- **Evidence:** `make validate` -> 50 checks pass; competitor-researcher gains a gap-ticket
+  spec (dedup, cap, sourced), wired into /improve-run Phase 0.
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold

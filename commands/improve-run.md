@@ -32,7 +32,7 @@ Repeat the cycle below until one of these stops is hit, then go to **Re-arm**:
 Work **one item per cycle**. Small, reviewable, independently revertible changes beat big risky ones. Update `state.json` (`status: "running"`, current cycle, current item) at the start of each cycle.
 
 ### Phase 0 — Replenish & prioritize (only when needed)
-If the backlog has fewer than 5 actionable items, run a discovery pass to refill it. Discovery means dispatching the specialist agents (below) to generate new, well-formed backlog items. Otherwise skip to Phase 1.
+If the backlog has fewer than 5 actionable items, run a discovery pass to refill it. Discovery means dispatching the specialist agents (below) to generate new, well-formed backlog items. As part of discovery, dispatch **competitor-researcher** to **file fresh, sourced gap tickets** into `.self-improve/backlog.md` (it de-duplicates against existing items and gaps already shipped, caps new tickets per pass, and cites a real source for each) so the loop keeps closing the distance to competitors. Otherwise skip to Phase 1.
 
 ### Phase 1 — Pick the next item
 Choose the highest-value actionable item from `backlog.md`. Bias toward: P0 journey breakage and real bugs first, then high-impact UX, then competitive-gap features, then perf/a11y/tech-debt. Skip anything blocked or out of bounds. Mark it `in-progress` in the backlog.
