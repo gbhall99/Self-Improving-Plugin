@@ -12,5 +12,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   silently break a run.
 - **Evidence:** `make validate` → 49 checks pass; negative tests (bad `status`, missing
   `cycle`, empty `qaGate`, missing `loop.*`) correctly fail with exit 1.
-- **Commit:** `c55ccec`
+- **Commit:** `737905a`
 - **Ship?** [ ] yes [ ] hold
