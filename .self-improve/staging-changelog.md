@@ -102,3 +102,22 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
 - **Evidence:** `make validate` -> 70 checks pass; negative test: an injected emoji fails exit 1.
 - **Commit:** `a2e2ab0`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 11 — SI-011 · Rename commands to /self-improve:* (BREAKING) + v1.0.0
+- **Category:** ux · **Persona/journey:** Operator / J1
+- **Impact:** cleaner, namespaced command surface (`/self-improve:setup` etc.) instead of the
+  redundant `/self-improve:improve-setup`. All refs updated; plugin bumped to 1.0.0 with the
+  breaking change recorded in CHANGELOG.
+- **Evidence:** `make validate` -> 70 checks pass; no stale `/improve-*` refs remain in current docs.
+- **Commit:** `a9ef637`
+- **Ship?** [ ] yes [ ] hold
+
+## Cycle 12 — SI-013 · Principle 6: prefer AI-centric, agentic solutions
+- **Category:** feature · **Persona/journey:** all / all
+- **Impact:** the loop now defaults to AI-native, agentic solutions where they genuinely serve
+  the user better (NL intent, adaptive behaviour, automated multi-step work, tool/agent use,
+  latest capable models), with a reliable fallback and no gimmicky AI.
+- **Evidence:** `make validate` -> 70 checks pass; principle 6 wired into run/setup standards,
+  README, feature-scout, implementer; CHANGELOG updated.
+- **Commit:** `a29879c`
+- **Ship?** [ ] yes [ ] hold

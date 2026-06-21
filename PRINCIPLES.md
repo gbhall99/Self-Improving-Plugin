@@ -33,3 +33,14 @@ The knowledge base must contain a living document of every **feature** (`feature
 loop keeps them current (principle 4). Every evaluation, test, and review explicitly considers all
 three: does this change serve a persona, complete or improve a journey, and is the affected
 feature documented and exercised? Nothing is evaluated in isolation from them.
+
+## 6. Prefer AI-centric, agentic solutions
+Default to AI-native and agentic approaches when they genuinely serve the persona better than a
+conventional one. For every problem, feature, and journey, ask first: *could an LLM or an agent
+do this better?* Favour designs where the product understands intent in natural language, adapts
+to the user, automates multi-step work, and uses tools/agents to act on the user's behalf —
+rather than static forms, manual steps, and rigid rules. Where AI is involved, use the latest,
+most capable models and sound agentic patterns (clear tool definitions, verification, graceful
+fallback). This is a strong default, **not** a mandate to bolt AI onto everything: reject AI that
+adds latency, cost, or unpredictability without a real user win, and always keep a reliable
+fallback. When two solutions are comparable, prefer the more AI-centric, agentic one.

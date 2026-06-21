@@ -1,6 +1,6 @@
 <!--
 Shift-report template for the single open `staging -> main` PR (the human review surface).
-Used by /improve-run (Phase 6) and /improve-report. Goal: let a reviewer approve hours of
+Used by /self-improve:run (Phase 6) and /self-improve:report. Goal: let a reviewer approve hours of
 unattended work in minutes by summarizing USER VALUE, not just code. Group every change by
 the persona/journey it serves, lead with a recommendation, and attach evidence.
 Principle 1: no emojis anywhere -- use plain text labels and crisp iconography only.
@@ -40,4 +40,4 @@ The review surface for autonomous work. The loop never merges here -- you decide
 ## How to decide
 - Ship everything: merge this PR.
 - Ship selectively: keep `<sha>`; reply with ids to drop and I'll prepare a `self-improve/ship-<date>` branch with only those.
-- Continue: `/improve-run`. Pause: `/improve-stop`.
+- Continue: `/self-improve:run`. Pause: `/self-improve:stop`.

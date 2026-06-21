@@ -6,9 +6,9 @@ argument-hint: "[optional: what to refresh — 'personas' | 'journeys' | 'featur
 # Self-Improve · Recalibrate
 
 Markets, products, and users drift. This refreshes the `.self-improve/` knowledge base so the
-autonomous loop keeps optimizing for what's true *now* — without the full one-off `/improve-setup`.
+autonomous loop keeps optimizing for what's true *now* — without the full one-off `/self-improve:setup`.
 
-**If `.self-improve/config.json` is missing, STOP and tell the user to run `/improve-setup` first.**
+**If `.self-improve/config.json` is missing, STOP and tell the user to run `/self-improve:setup` first.**
 Read the existing `.self-improve/` files first. Respect `$ARGUMENTS` to scope the refresh (default: all).
 
 ## Steps
@@ -30,4 +30,4 @@ Read the existing `.self-improve/` files first. Respect `$ARGUMENTS` to scope th
 ## Finish
 Print a concise diff summary: what changed in personas/journeys/competitors, new backlog items
 added, items re-prioritized, and the top 5 items the loop will tackle next. Do not implement
-backlog items here — recalibration only. Resume improving with `/improve-run`.
+backlog items here — recalibration only. Resume improving with `/self-improve:run`.

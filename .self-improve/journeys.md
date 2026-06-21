@@ -7,15 +7,15 @@ Surfaces this product exposes: the 5 slash commands (`commands/*.md`), the 9 sub
 ## P0 — core journeys
 
 ### J1 · First run, end to end (Operator)
-`/plugin marketplace add …` → `/plugin install self-improve` → `/improve-setup` (answer
-startup questions) → `/improve-run` → walk away → `/improve-report` → ship.
+`/plugin marketplace add …` → `/plugin install self-improve` → `/self-improve:setup` (answer
+startup questions) → `/self-improve:run` → walk away → `/self-improve:report` → ship.
 - **Outcome:** vetted improvements on `self-improve/staging`, one report, ship decision made.
 - **Friction/abandon points:** unclear startup questions; setup produces vague personas;
   loop doesn't actually re-arm; report too long to act on.
 - **Verify:** structure validates; commands carry clear `argument-hint`s; setup writes a complete `.self-improve/`.
 
 ### J2 · Setup research quality (Operator/Reviewer)
-`/improve-setup` produces concrete personas, prioritized testable journeys, a real
+`/self-improve:setup` produces concrete personas, prioritized testable journeys, a real
 competitor matrix, detected commands, and a 15–30 item backlog.
 - **Outcome:** a complete, committed `.self-improve/` knowledge base + `self-improve/staging`.
 - **Friction:** generic personas; journeys with no test mapping; empty/over-long backlog.
@@ -31,11 +31,11 @@ staging → changelog entry → fresh `staging → main` PR.
 ## P1 — important journeys
 
 ### J4 · Stop cleanly (Operator)
-`/improve-stop` → status `stopped`, re-arm cancelled, no half-done work on staging.
+`/self-improve:stop` → status `stopped`, re-arm cancelled, no half-done work on staging.
 - **Verify:** in-flight cycle finished-or-reverted; scheduled re-arm cancelled.
 
 ### J5 · Mid-run status (Operator, often on phone)
-`/improve-status` → fast read-only snapshot: status, current item, cycles done, backlog, PR link.
+`/self-improve:status` → fast read-only snapshot: status, current item, cycles done, backlog, PR link.
 - **Verify:** no mutations; concise output.
 
 ### J6 · Validation with zero Actions credit (Gatekeeper/Maintainer)

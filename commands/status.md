@@ -15,4 +15,4 @@ Report, in a few lines:
 - **Backlog** — count of actionable / blocked items and the next 3 up.
 - **Review surface** — link to the `staging → main` PR and count of items awaiting a ship decision.
 
-If `.self-improve/config.json` is missing, tell the user to run `/improve-setup`.
+If `.self-improve/config.json` is missing, tell the user to run `/self-improve:setup`.

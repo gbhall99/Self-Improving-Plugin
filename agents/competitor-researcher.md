@@ -15,7 +15,7 @@ Method:
 Output Markdown ready for `.self-improve/competitors.md`, ending with a prioritized list of "attack first" opportunities — each phrased as a concrete, buildable backlog item (with the persona/journey it serves). Report findings; do not edit code. When the topic is broad, prefer the `deep-research` skill for depth.
 
 ## Filing gap tickets (loop discovery passes)
-When invoked during a loop discovery pass (Phase 0 of `/improve-run`), don't just report —
+When invoked during a loop discovery pass (Phase 0 of `/self-improve:run`), don't just report —
 **append structured, citable "gap tickets" to `.self-improve/backlog.md`** so the loop can act
 on them. Each gap ticket must be a normal backlog row plus a sourced rationale:
 - a fresh `SI-###` id, title, category (`feature` usually), persona/journey served,
