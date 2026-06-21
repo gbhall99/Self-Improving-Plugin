@@ -12,6 +12,15 @@ First, read the knowledge base: `.self-improve/config.json`, `state.json`, `pers
 
 Honor `outOfBounds` in config at all times. Never push to `main`. Respect `$ARGUMENTS` if it limits cycles or sets an end time.
 
+## Guardrails (check before and during every cycle)
+Read `loop.guardrails` from `config.json` and enforce it — this is what makes "leave it running for hours" safe:
+- **Kill switch:** if `state.json.status` is `"stopped"`, halt immediately (do not start a new cycle).
+- **Auto-pause on failure streak:** track consecutive cycles that fail the QA gate or get abandoned. If it reaches `guardrails.maxConsecutiveFailures` (default 3), set `state.json.status` to `"paused"`, stop re-arming, and write a clear note in the report explaining what kept failing. Do not keep grinding.
+- **Rate cap:** do not exceed `guardrails.maxMergesPerHour` (default 6) merges to staging; if hit, idle until the window resets or end the run.
+- **Spend cap:** if `guardrails.maxSpendUSD` is set, stop starting new cycles once you estimate it's reached and say so in the report.
+- **Out-of-bounds is absolute:** never touch `outOfBounds` paths/concerns even if an item seems to require it — mark the item `blocked` instead.
+If `loop.guardrails` is absent, use the defaults above. A paused run is resumed only by the user (`/improve-run`), not by self-re-arm.
+
 ## The loop
 
 Repeat the cycle below until one of these stops is hit, then go to **Re-arm**:

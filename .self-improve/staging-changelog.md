@@ -25,3 +25,15 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   `/improve-run` Phase 6 and `/improve-report`. (This very PR body is rendered from it.)
 - **Commit:** `ae3a6a0`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 3 — SI-003 · Unattended safety guardrails
+- **Category:** feature · **Persona/journey:** Operator, Gatekeeper / J3, J4
+- **Impact:** makes "leave it running for hours" actually safe — kill switch, auto-pause
+  after a failure streak (default 3), merges/hour rate cap (default 6), optional spend cap,
+  and absolute out-of-bounds, all honored by `/improve-run`. This is the precondition rivals
+  avoid by billing per-task; we offer bounded, auditable continuous operation.
+- **Evidence:** `make validate` → 49 checks pass (incl. SI-006's config/state schema check
+  on the new `loop.guardrails`); `/improve-setup` writes guardrails; `/improve-stop` documents
+  stopped vs paused.
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold

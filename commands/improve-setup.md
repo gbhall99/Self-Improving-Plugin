@@ -70,7 +70,12 @@ Create `.self-improve/config.json` capturing everything the loop needs:
   "loop": {
     "sessionBudgetHours": 6,
     "checkpointMinutes": 20,
-    "mergePolicy": "auto-merge-to-staging"
+    "mergePolicy": "auto-merge-to-staging",
+    "guardrails": {
+      "maxConsecutiveFailures": 3,
+      "maxMergesPerHour": 6,
+      "maxSpendUSD": null
+    }
   },
   "outOfBounds": ["..."],
   "qaGate": ["lint", "typecheck", "build", "test", "e2e"],
