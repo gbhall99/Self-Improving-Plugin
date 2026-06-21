@@ -14,3 +14,14 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   `cycle`, empty `qaGate`, missing `loop.*`) correctly fail with exit 1.
 - **Commit:** `737905a`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 2 — SI-001 · Persona/journey-grouped "shift report" PR + report
+- **Category:** feature · **Persona/journey:** Reviewer / J1
+- **Impact:** the `staging → main` PR and `/improve-report` now group every change by the
+  persona/journey it serves with a Ship/Hold recommendation + evidence — a reviewer can
+  approve hours of unattended work in minutes by reading user value, not raw code. Closes
+  the top competitive gap (no rival summarizes user value).
+- **Evidence:** `make validate` → 49 checks pass; new `templates/staging-pr.md` wired into
+  `/improve-run` Phase 6 and `/improve-report`. (This very PR body is rendered from it.)
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold

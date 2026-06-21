@@ -53,8 +53,8 @@ Only when the gate is fully green:
 - Move the item to `done` in `backlog.md` and write a short per-cycle log to `.self-improve/cycles/cycle-<n>.md`.
 - Push `staging`.
 
-### Phase 6 — Keep the aggregate PR fresh
-Ensure exactly one open PR exists from `staging` → `main` (create it if missing; this is the review surface, NOT to be merged by you). Update its body with the running list of shipped items and the ship/hold checklist. The human merges or cherry-picks from here.
+### Phase 6 — Keep the aggregate PR fresh (the "shift report")
+Ensure exactly one open PR exists from `staging` → `main` (create it if missing; this is the review surface, NOT to be merged by you). Render its body from `templates/staging-pr.md`: **group every shipped change by the persona/journey it serves**, lead each with a recommendation (Ship/Hold/Needs-review), and attach evidence (tests run + result, before/after screenshots for UI). The point is to let the reviewer approve hours of work in minutes by summarizing *user value*, not just code. Keep the ship/hold checklist in sync with `.self-improve/staging-changelog.md`. The human merges or cherry-picks from here.
 
 ### Checkpoint
 Every `loop.checkpointMinutes` (or each cycle, whichever is longer), update `state.json` and the aggregate PR so progress is always visible if the user checks in early.

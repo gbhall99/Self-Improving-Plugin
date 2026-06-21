@@ -6,7 +6,7 @@ Priority score 1–10 (higher = sooner). Status: `todo` `in-progress` `done` `bl
 | id | title | cat | persona/journey | acceptance criterion | effort | pri | status |
 |---|---|---|---|---|---|---|---|
 | SI-006 | Validate generated `.self-improve/` state (config.json, state.json) in the QA gate | tech-debt | Maintainer / J2,J3 | Validator checks config/state schema + required fields when present; passes on valid, fails (exit 1) on bad; CI + `make validate` cover it | S | 9 | done ✓ cycle 1 |
-| SI-001 | Persona/journey-grouped "shift report" PR body + report | feature | Reviewer / J1 | `/improve-run` Phase 6 & `/improve-report` group changes by persona/journey w/ evidence & rationale; template documented | M | 8 | todo |
+| SI-001 | Persona/journey-grouped "shift report" PR body + report | feature | Reviewer / J1 | `/improve-run` Phase 6 & `/improve-report` group changes by persona/journey w/ evidence & rationale; template documented | M | 8 | done ✓ cycle 2 |
 | SI-003 | Unattended safety guardrails (budget caps, auto-pause on N consecutive QA failures, kill switch) | feature | Operator,Gatekeeper / J3,J4 | `config.json` carries `loop.guardrails`; `/improve-run` honors caps & auto-pauses; documented | M | 8 | todo |
 | SI-008 | Add `CONTRIBUTING.md` for the Maintainer persona | ux | Maintainer / J7 | Clear contribution + local-validation guide; linked from README | S | 7 | todo |
 | SI-007 | README polish: CI badge, table of contents, no-egress/zero-infra guarantees | ux | Operator,Gatekeeper / J1 | Badge renders; TOC links resolve; guarantees section present | S | 7 | todo |
