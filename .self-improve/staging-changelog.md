@@ -129,5 +129,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
 - **Evidence:** `claude plugin validate .` PASS; `claude plugin install` succeeds; all 6 commands
   + 9 agents load. Local validator now rejects the bad form (CI-guarded); `make validate` runs
   the official validator when the CLI is present.
-- **Commit:** `<pending>`
+- **Commit:** `012711a`
 - **Ship?** [ ] yes [ ] hold
