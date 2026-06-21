@@ -70,5 +70,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
 - **Impact:** releases are now trackable and predictable — a keep-a-changelog file and a
   documented version-bump/tag procedure.
 - **Evidence:** `make validate` -> 50 checks pass; CHANGELOG.md added, CONTRIBUTING release steps updated.
-- **Commit:** `<pending>`
+- **Commit:** `c06e6fa`
 - **Ship?** [ ] yes [ ] hold
