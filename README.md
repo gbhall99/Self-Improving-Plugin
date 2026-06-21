@@ -170,6 +170,12 @@ kept deliberately cheap — a `paths` filter so it only runs when plugin files c
 `concurrency` to cancel superseded runs, and a single ~10s step with no install steps —
 so it sips minutes when it does run.
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for project layout, how to add a command or agent,
+and the local validation gate. The short version: run `make validate` before every push
+(and `make install-hooks` once to gate pushes locally).
+
 ## Requirements
 
 - Claude Code with plugin support.

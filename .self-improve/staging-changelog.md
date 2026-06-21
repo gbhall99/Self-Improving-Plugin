@@ -37,3 +37,11 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   stopped vs paused.
 - **Commit:** `9e483c4`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 4 — SI-008 · CONTRIBUTING.md for the Maintainer persona
+- **Category:** ux · **Persona/journey:** Maintainer / J7
+- **Impact:** contributors now have a clear path — project layout, the local validation gate,
+  and how to add commands/agents with correct frontmatter — lowering the barrier to extend the plugin.
+- **Evidence:** `make validate` → 49 checks pass; `CONTRIBUTING.md` added and linked from README.
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold
