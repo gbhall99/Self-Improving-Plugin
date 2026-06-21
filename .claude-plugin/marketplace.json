@@ -1,0 +1,17 @@
+{
+  "name": "self-improve-marketplace",
+  "owner": {
+    "name": "gbhall99"
+  },
+  "metadata": {
+    "description": "Marketplace hosting the self-improve autonomous improvement plugin.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "self-improve",
+      "source": "./",
+      "description": "Autonomous, continuous self-improvement loop for any repo: persona & journey research, bug hunting, UX improvement, competitive research, E2E/visual journey testing, and vetted auto-staged PRs you review later."
+    }
+  ]
+}

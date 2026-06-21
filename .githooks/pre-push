@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Local validation gate — runs the exact same check as CI before every push.
+# This is the safety net for when GitHub Actions credit is exhausted: even with
+# zero Actions minutes, a broken plugin manifest or bad frontmatter can't be
+# pushed silently.
+#
+# Enable once per clone with:  make install-hooks   (or: git config core.hooksPath .githooks)
+# Bypass in a pinch with:      git push --no-verify
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "pre-push: python3 not found; skipping plugin validation." >&2
+  exit 0
+fi
+
+echo "pre-push: validating self-improve plugin…"
+if ! python3 "$repo_root/scripts/validate_plugin.py"; then
+  echo "" >&2
+  echo "pre-push: validation failed — push aborted. Fix the issues above," >&2
+  echo "          or bypass with 'git push --no-verify' if you know what you're doing." >&2
+  exit 1
+fi

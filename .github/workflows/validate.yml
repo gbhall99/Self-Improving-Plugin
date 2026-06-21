@@ -1,0 +1,43 @@
+name: validate-plugin
+
+# Kept deliberately cheap so it sips Actions minutes:
+#  - only runs when plugin files actually change (paths filter)
+#  - cancels superseded runs on the same ref (concurrency)
+#  - single ~10s job, no setup/install steps (uses the runner's built-in python3)
+#
+# If you run out of Actions credit entirely, validation is NOT lost: the exact
+# same check runs locally via `make validate` and the git pre-push hook
+# (`make install-hooks`). See README "Validation & CI".
+
+on:
+  push:
+    paths:
+      - ".claude-plugin/**"
+      - "commands/**"
+      - "agents/**"
+      - "scripts/validate_plugin.py"
+      - ".github/workflows/validate.yml"
+  pull_request:
+    paths:
+      - ".claude-plugin/**"
+      - "commands/**"
+      - "agents/**"
+      - "scripts/validate_plugin.py"
+      - ".github/workflows/validate.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate plugin manifests and frontmatter
+        run: python3 scripts/validate_plugin.py
