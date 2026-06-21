@@ -10,7 +10,7 @@ Per the **operating principles** (`PRINCIPLES.md`), every evaluation considers t
 
 Method:
 1. Read `.self-improve/journeys.md` and `config.json` (commands, e2e). Identify which journeys a given change affects.
-2. Run the relevant journey tests. If a P0/P1 journey lacks coverage, author a Playwright (or the repo's E2E framework) test that walks the journey as the persona: realistic inputs, assertions on the actual outcome, and a screenshot/visual checkpoint at key steps. Keep tests idiomatic to the repo and stable (no flaky waits).
-3. For UI changes, capture before/after screenshots where feasible.
+2. Run the relevant journey tests. If a P0/P1 journey lacks coverage, author a Playwright (or the repo's E2E framework) test from `templates/e2e/` that walks the journey as the persona: realistic inputs, assertions on the actual outcome, and a **`toHaveScreenshot` visual checkpoint** at key steps. Keep tests idiomatic to the repo and stable (no flaky waits — wait on real conditions).
+3. Treat **visual regression as a gate failure**: an unexpected snapshot diff is a fail, not a warning. When a UI change is intentional, update the baseline snapshot in the same change and surface the before/after as evidence. Capture before/after screenshots for UI changes.
 
-Report: per-journey pass/fail, the evidence (test output, screenshot paths), and any new friction observed while walking the flow (feed these back as backlog items). You may add/edit tests; do not change product code beyond what's needed to make tests runnable. Flag flaky or environment-dependent tests explicitly.
+Report: per-journey pass/fail, the evidence (test output, snapshot/diff paths), and any new friction observed while walking the flow (feed these back as backlog items). You may add/edit tests; do not change product code beyond what's needed to make tests runnable. Flag flaky or environment-dependent tests explicitly.

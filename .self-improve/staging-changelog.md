@@ -131,3 +131,22 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   the official validator when the CLI is present.
 - **Commit:** `012711a`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 14 — SI-009 · E2E + visual-regression gate for UI target repos
+- **Category:** feature · **Persona/journey:** Operator / J3
+- **Impact:** the loop can now prove user journeys work AND that the UI did not regress visually
+  on real UI products -- Playwright + visual-diff scaffold tied to journeys.md, blocking the
+  staging gate on unreviewed diffs. Closes the one area where Devin/Cursor had pulled ahead.
+- **Evidence:** `make validate` -> 70 checks pass + official `claude plugin validate` PASS;
+  templates/e2e/ added; wired into setup Step 6, run Phase 4, journey-tester.
+- **Commit:** `e7de596`
+- **Ship?** [ ] yes [ ] hold
+
+## Cycle 15 — SI-015 · Emoji gate scans template subdirectories
+- **Category:** bug · **Persona/journey:** Maintainer / J6
+- **Impact:** principle-1 enforcement no longer has a blind spot -- nested docs (e.g.
+  templates/e2e/README.md) are now scanned for emojis.
+- **Evidence:** gap reproduced (subdir emoji passed before); after fix it fails exit 1;
+  `make validate` -> 71 checks pass + official validate PASS.
+- **Commit:** `b7aa8a0`
+- **Ship?** [ ] yes [ ] hold

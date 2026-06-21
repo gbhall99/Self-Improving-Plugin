@@ -10,6 +10,9 @@ versioning is [SemVer](https://semver.org/) and tracks `.claude-plugin/plugin.js
 - Operating principle 6: prefer AI-centric, agentic solutions — wired into `/self-improve:run`,
   `/self-improve:setup`, and the feature-scout and implementer agents.
 - `make validate` also runs the official `claude plugin validate` when the CLI is present.
+- E2E + visual-regression scaffold (`templates/e2e/`): Playwright config + per-journey spec with
+  `toHaveScreenshot` checkpoints; setup scaffolds it for UI repos and the loop treats visual
+  diffs as a blocking gate failure.
 
 ### Fixed
 - Plugin failed `claude plugin validate` / install because `plugin.json` declared `commands`

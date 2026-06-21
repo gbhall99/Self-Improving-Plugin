@@ -208,7 +208,8 @@ def validate_no_emojis() -> None:
     for dirname in ("commands", "agents", "templates"):
         d = ROOT / dirname
         if d.is_dir():
-            targets += sorted(d.glob("*.md"))
+            # recursive so nested docs (e.g. templates/e2e/README.md) are covered too
+            targets += sorted(d.rglob("*.md"))
     for name in ("README.md", "CONTRIBUTING.md", "PRINCIPLES.md", "CHANGELOG.md"):
         p = ROOT / name
         if p.is_file():
