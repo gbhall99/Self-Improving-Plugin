@@ -139,5 +139,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   staging gate on unreviewed diffs. Closes the one area where Devin/Cursor had pulled ahead.
 - **Evidence:** `make validate` -> 70 checks pass + official `claude plugin validate` PASS;
   templates/e2e/ added; wired into setup Step 6, run Phase 4, journey-tester.
-- **Commit:** `<pending>`
+- **Commit:** `e7de596`
 - **Ship?** [ ] yes [ ] hold
