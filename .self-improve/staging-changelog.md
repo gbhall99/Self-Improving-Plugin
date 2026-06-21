@@ -82,3 +82,13 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   spec (dedup, cap, sourced), wired into /improve-run Phase 0.
 - **Commit:** `a6ffcf4`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 9 — SI-005 · Local versioned playbooks/knowledge
+- **Category:** feature · **Persona/journey:** Operator / J3
+- **Impact:** the loop now gets smarter about *your* repo over time — verified repro/verify
+  steps are saved to `.self-improve/knowledge/` and reused, matching Devin's compounding
+  knowledge advantage but kept local and version-controlled (no vendor knowledge silo).
+- **Evidence:** `make validate` -> 50 checks pass; `/improve-run` consults knowledge (Phase 2)
+  and captures playbooks (Phase 5); `/improve-setup` creates the dir; seeded a real qa-gate playbook.
+- **Commit:** `128974c` (landed directly on staging — single clean commit)
+- **Ship?** [ ] yes [ ] hold
