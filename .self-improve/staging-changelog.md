@@ -141,3 +141,12 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   templates/e2e/ added; wired into setup Step 6, run Phase 4, journey-tester.
 - **Commit:** `e7de596`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 15 — SI-015 · Emoji gate scans template subdirectories
+- **Category:** bug · **Persona/journey:** Maintainer / J6
+- **Impact:** principle-1 enforcement no longer has a blind spot -- nested docs (e.g.
+  templates/e2e/README.md) are now scanned for emojis.
+- **Evidence:** gap reproduced (subdir emoji passed before); after fix it fails exit 1;
+  `make validate` -> 71 checks pass + official validate PASS.
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold

@@ -23,6 +23,8 @@ Priority score 1–10 (higher = sooner). Status: `todo` `in-progress` `done` `bl
 
 | SI-014 | Fix plugin.json so it passes official `claude plugin validate` and installs | bug | all / J1 | Manifest validates and installs; local validator rejects non-array commands/agents; make validate runs official validator when available | S | 10 | done ✓ cycle 13 |
 
+| SI-015 | Emoji gate scans template subdirectories (recursive) | bug | Maintainer / J6 | rglob over templates so nested docs are checked; verified catches subdir emoji | S | 6 | done ✓ cycle 15 |
+
 ## Notes
 - Bias order: P0 journey breakage & real bugs → high-impact UX → competitive-gap features → perf/a11y/tech-debt.
 - SI-006 selected for cycle 1 (testable code, strengthens the plugin's own QA gate — on-theme self-improvement).
