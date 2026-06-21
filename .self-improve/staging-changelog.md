@@ -100,5 +100,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   current, and document/test against features+personas+journeys. Adds PRINCIPLES.md and a
   features.md catalogue; scrubs existing emojis; brings README/CONTRIBUTING/CHANGELOG current.
 - **Evidence:** `make validate` -> 70 checks pass; negative test: an injected emoji fails exit 1.
-- **Commit:** `<pending>`
+- **Commit:** `a2e2ab0`
 - **Ship?** [ ] yes [ ] hold
