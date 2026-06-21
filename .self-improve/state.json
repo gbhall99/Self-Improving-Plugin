@@ -1,7 +1,8 @@
 {
-  "status": "ready",
-  "cycle": 0,
+  "status": "scheduled",
+  "cycle": 1,
   "currentItem": null,
   "lastReport": null,
+  "shippedThisRun": ["SI-006"],
   "setupCompletedAt": "2026-06-21T10:30:18Z"
 }

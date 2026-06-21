@@ -103,6 +103,64 @@ def validate_marketplace_manifest() -> None:
             err(f"{where}: source path '{source}' does not exist")
 
 
+VALID_STATES = {"ready", "running", "scheduled", "stopped", "paused"}
+
+
+def validate_self_improve_state() -> None:
+    """Validate the generated .self-improve/ knowledge base, if present.
+
+    These files only exist after `/improve-setup` has run, so absence is fine
+    (a fresh target repo, or this plugin before its own setup). When they do
+    exist, a malformed config/state would silently break the loop — so the QA
+    gate covers them too.
+    """
+    base = ROOT / ".self-improve"
+    if not base.is_dir():
+        return  # not set up yet — nothing to validate
+
+    config = base / "config.json"
+    if config.is_file():
+        data = load_json(".self-improve/config.json")
+        if data is not None:
+            require_fields(
+                data, ["product", "primaryGoal", "branches", "loop", "qaGate"],
+                ".self-improve/config.json",
+            )
+            branches = data.get("branches")
+            if isinstance(branches, dict):
+                require_fields(
+                    branches, ["main", "staging", "cyclePrefix"],
+                    ".self-improve/config.json branches",
+                )
+            elif branches is not None:
+                err(".self-improve/config.json: 'branches' must be an object")
+            loop = data.get("loop")
+            if isinstance(loop, dict):
+                require_fields(
+                    loop, ["sessionBudgetHours", "checkpointMinutes", "mergePolicy"],
+                    ".self-improve/config.json loop",
+                )
+            elif loop is not None:
+                err(".self-improve/config.json: 'loop' must be an object")
+            qa = data.get("qaGate")
+            if qa is not None and (not isinstance(qa, list) or not qa):
+                err(".self-improve/config.json: 'qaGate' must be a non-empty array")
+
+    state = base / "state.json"
+    if state.is_file():
+        data = load_json(".self-improve/state.json")
+        if data is not None:
+            require_fields(data, ["status", "cycle"], ".self-improve/state.json")
+            status = data.get("status")
+            if status is not None and status not in VALID_STATES:
+                err(
+                    f".self-improve/state.json: status '{status}' must be one of "
+                    f"{sorted(VALID_STATES)}"
+                )
+            if "cycle" in data and not isinstance(data["cycle"], int):
+                err(".self-improve/state.json: 'cycle' must be an integer")
+
+
 def validate_markdown_dir(dirname: str, required: list[str]) -> None:
     directory = ROOT / dirname
     if not directory.is_dir():
@@ -129,6 +187,7 @@ def main() -> int:
     validate_marketplace_manifest()
     validate_markdown_dir("commands", ["description"])
     validate_markdown_dir("agents", ["name", "description"])
+    validate_self_improve_state()
 
     print(f"self-improve plugin validation: {checks} checks passed.")
     if errors:
