@@ -92,3 +92,13 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   and captures playbooks (Phase 5); `/improve-setup` creates the dir; seeded a real qa-gate playbook.
 - **Commit:** `128974c` (landed directly on staging — single clean commit)
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 10 — SI-012 · Bake in operating principles + features doc
+- **Category:** feature, tech-debt, ux · **Persona/journey:** all / all
+- **Impact:** the five standing standards are now enforced everywhere: no emojis (crisp
+  iconography, now a hard QA-gate check), simplify for the user, remove redundancy, keep docs
+  current, and document/test against features+personas+journeys. Adds PRINCIPLES.md and a
+  features.md catalogue; scrubs existing emojis; brings README/CONTRIBUTING/CHANGELOG current.
+- **Evidence:** `make validate` -> 70 checks pass; negative test: an injected emoji fails exit 1.
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold

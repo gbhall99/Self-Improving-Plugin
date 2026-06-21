@@ -1,6 +1,6 @@
 ---
 description: Refresh the knowledge base without redoing full setup. Re-runs the research agents to update personas, user journeys, and the competitive profile, diffs against the current files, and re-prioritizes the backlog so the loop keeps aiming at what matters now.
-argument-hint: "[optional: what to refresh — 'personas' | 'journeys' | 'competitors' | 'all' (default all)]"
+argument-hint: "[optional: what to refresh — 'personas' | 'journeys' | 'features' | 'competitors' | 'all' (default all)]"
 ---
 
 # Self-Improve · Recalibrate
@@ -16,6 +16,7 @@ Read the existing `.self-improve/` files first. Respect `$ARGUMENTS` to scope th
 1. **Re-research** the requested areas by dispatching the specialist agents:
    - `persona-researcher` → updated personas
    - `journey-mapper` → updated journeys (re-grounded in the current codebase surfaces)
+   - re-scan the codebase to refresh `features.md` so every current feature is documented (principle 5)
    - `competitor-researcher` → refreshed competitive profile + new gaps
 2. **Diff, don't clobber.** For each file, show what changed (new/removed/changed personas,
    journeys, competitor moves). Preserve anything still accurate; only update what drifted.

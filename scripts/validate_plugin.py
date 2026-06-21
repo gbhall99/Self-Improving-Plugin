@@ -182,12 +182,46 @@ def validate_markdown_dir(dirname: str, required: list[str]) -> None:
             err(f"{rel}: agent name '{fm['name']}' should match filename '{path.stem}'")
 
 
+# Codepoints treated as emoji (principle 1). Astral pictographs plus a few BMP
+# emoji-presentation symbols. Plain text-style icons like ✓ ✗ → • are allowed.
+_EMOJI_BLOCKLIST = {
+    0x2B50, 0x2B55, 0x2705, 0x274C, 0x2728, 0x26A0, 0x2757, 0x2753, 0x2B1B, 0x2B1C,
+}
+
+
+def _has_emoji(ch: str) -> bool:
+    cp = ord(ch)
+    return cp >= 0x1F000 or cp in _EMOJI_BLOCKLIST
+
+
+def validate_no_emojis() -> None:
+    """Principle 1: no emojis in the plugin's own markdown — crisp iconography only."""
+    targets: list[Path] = []
+    for dirname in ("commands", "agents", "templates"):
+        d = ROOT / dirname
+        if d.is_dir():
+            targets += sorted(d.glob("*.md"))
+    for name in ("README.md", "CONTRIBUTING.md", "PRINCIPLES.md", "CHANGELOG.md"):
+        p = ROOT / name
+        if p.is_file():
+            targets.append(p)
+    for path in targets:
+        rel = path.relative_to(ROOT)
+        bad = sorted({ch for ch in path.read_text() if _has_emoji(ch)})
+        if bad:
+            chars = " ".join(f"U+{ord(c):04X}" for c in bad)
+            err(f"{rel}: contains emoji ({chars}) — principle 1 forbids emojis (use crisp iconography)")
+        else:
+            ok(f"{rel}: no emojis")
+
+
 def main() -> int:
     validate_plugin_manifest()
     validate_marketplace_manifest()
     validate_markdown_dir("commands", ["description"])
     validate_markdown_dir("agents", ["name", "description"])
     validate_self_improve_state()
+    validate_no_emojis()
 
     print(f"self-improve plugin validation: {checks} checks passed.")
     if errors:

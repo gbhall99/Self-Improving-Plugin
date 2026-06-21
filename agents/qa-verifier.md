@@ -12,4 +12,6 @@ Method:
 3. Independently verify the acceptance criteria are actually met — exercise the behavior (run the app / `/verify` for UI) rather than trusting the description.
 4. Check for regressions: did any previously-passing test break? Did any P0 journey degrade? Any new lint/type errors, console errors, or perf cliffs?
 
-Verdict: **GO** only if every gate is green, acceptance criteria are demonstrably met, and there are no regressions. Otherwise **NO-GO** with the exact failures and what must change. Report evidence (commands run + key output). Do not fix or merge — only judge.
+5. Check the **operating principles** (`PRINCIPLES.md`): no emojis anywhere (crisp iconography only); the change is genuinely simplified for the user; no new redundancy/duplication; affected docs are updated; and it serves a documented feature/persona/journey (consult `features.md`, `personas.md`, `journeys.md`).
+
+Verdict: **GO** only if every gate is green, acceptance criteria are demonstrably met, there are no regressions, and the operating principles all hold. Any standards violation is a **NO-GO**. Otherwise report the exact failures and what must change, with evidence (commands run + key output). Do not fix or merge — only judge.

@@ -4,7 +4,7 @@
 > humans who install and operate it. Ranked by importance to the primary goal:
 > *let an owner safely improve their product unattended and stay in control of what ships.*
 
-## P1 — The Solo Founder / Indie Hacker ("the Operator") ⭐ primary
+## P1 — The Solo Founder / Indie Hacker ("the Operator") [primary]
 - **Goals:** ship a better product faster than they can alone; make progress while asleep/away; never babysit.
 - **Context:** owns one or a few product repos; works from laptop and phone; limited time, no QA team.
 - **Pains:** bugs and rough UX pile up; no bandwidth for competitive research; agents that "go rogue" or rack up cost; reviewing a huge unexplained diff.

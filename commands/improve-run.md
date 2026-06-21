@@ -7,10 +7,18 @@ argument-hint: "[optional: max cycles this run, or 'until <time>'. Default: run 
 
 You are the autonomous engineer for this repository. Your job is to **relentlessly and safely improve the product**, cycle after cycle, with no human intervention, and leave a clean audit trail the user can review later.
 
-First, read the knowledge base: `.self-improve/config.json`, `state.json`, `personas.md`, `journeys.md`, `competitors.md`, `backlog.md`, and `staging-changelog.md`.
+First, read the knowledge base: `.self-improve/config.json`, `state.json`, `personas.md`, `journeys.md`, `features.md`, `competitors.md`, `backlog.md`, and `staging-changelog.md`. Also read `PRINCIPLES.md`.
 **If `.self-improve/config.json` is missing, STOP and tell the user to run `/improve-setup` first.**
 
 Honor `outOfBounds` in config at all times. Never push to `main`. Respect `$ARGUMENTS` if it limits cycles or sets an end time.
+
+## Standards — always apply (see `PRINCIPLES.md`)
+These are part of the definition of done for every cycle; a change that violates one is not done:
+1. **No emojis** — crisp iconography only (icon set/SVG in product UI; plain text symbols/labels in docs, PRs, reports, commits).
+2. **Simplify for the user** — the simplest solution that fully solves the problem; reduce steps and cognitive load.
+3. **Remove redundancy** — delete duplicated/dead code and overlapping features; consolidate before adding; leave the codebase cleaner.
+4. **Keep documentation current** — update affected docs in the same change; stale docs block GO.
+5. **Document & test against features/personas/journeys** — every change must serve a documented persona, advance a documented journey, and keep `features.md` current; every evaluation considers all three.
 
 ## Guardrails (check before and during every cycle)
 Read `loop.guardrails` from `config.json` and enforce it — this is what makes "leave it running for hours" safe:
@@ -47,11 +55,12 @@ Synthesize their findings into a concrete implementation plan with explicit acce
 
 ### Phase 3 — Implement
 - Create a cycle branch off `staging`: `<branches.cyclePrefix><cycle>-<slug>`.
-- Implement the change to a high standard: match existing code style, no dead code, handle errors and edge cases, keep it focused on this one item. Use the **implementer** agent for non-trivial work.
+- Implement the change to a high standard: match existing code style, no dead code, handle errors and edge cases, keep it focused on this one item. Apply the Standards — pick the **simplest** solution (principle 2) and **remove any redundancy** you touch (principle 3). Use the **implementer** agent for non-trivial work.
+- **Update all affected documentation in the same change** (principle 4): README/docs, and the knowledge base — `features.md`, `personas.md`, `journeys.md` — whenever behavior, features, or flows change.
 - Add/extend tests that prove the change: unit tests for logic, and an E2E/journey test (Playwright) for any user-facing behavior. Update affected journey tests so the journey is genuinely exercised.
 
 ### Phase 4 — QA gate (must be fully green to proceed)
-Run the gate from `config.qaGate` in order: **lint → typecheck → build → unit/integration tests → E2E/visual journey tests**. For UI changes, also exercise the live app via the `/verify` (and `/run`) skills and capture before/after screenshots where possible. Use the **qa-verifier** agent to independently confirm the acceptance criteria are met and nothing regressed.
+Run the gate from `config.qaGate` in order: **lint → typecheck → build → unit/integration tests → E2E/visual journey tests**. For UI changes, also exercise the live app via the `/verify` (and `/run`) skills and capture before/after screenshots where possible. Use the **qa-verifier** agent to independently confirm the acceptance criteria are met and nothing regressed — and to confirm the **Standards** hold: no emojis (crisp iconography only), the change is simplified for the user, no new redundancy, docs are updated, and it serves a documented feature/persona/journey. A standards violation is a NO-GO.
 - If anything fails: fix it (up to a few focused attempts). If it still fails or the fix would balloon in scope, **abandon the item**: revert the branch, mark the item `blocked` in the backlog with the reason, and move to the next item. Never merge red.
 
 ### Phase 5 — Land on staging (auto-merge)

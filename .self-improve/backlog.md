@@ -17,6 +17,8 @@ Priority score 1–10 (higher = sooner). Status: `todo` `in-progress` `done` `bl
 | SI-010 | Add a `CHANGELOG.md` + version bump convention | tech-debt | Maintainer | Keep-a-changelog file; version policy documented | S | 4 | done ✓ cycle 7 |
 | SI-011 | Consider renaming commands so they read `/self-improve:setup` not `:improve-setup` | ux | Operator / J1 | Decision recorded; if renamed, all refs/validator updated, no breakage | M | 4 | todo |
 
+| SI-012 | Bake in operating principles (no emoji/crisp icons, simplify, de-dup, docs current, document+test features/personas/journeys) + features.md + emoji QA check | feature | all / all | PRINCIPLES.md wired into commands+agents; features.md produced; validator rejects emojis; docs current | M | 9 | done ✓ cycle 10 |
+
 ## Notes
 - Bias order: P0 journey breakage & real bugs → high-impact UX → competitive-gap features → perf/a11y/tech-debt.
 - SI-006 selected for cycle 1 (testable code, strengthens the plugin's own QA gate — on-theme self-improvement).

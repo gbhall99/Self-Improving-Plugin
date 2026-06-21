@@ -19,6 +19,7 @@ always stay in control of what reaches `main`.**
 - [Workflow](#workflow)
 - [Branch & merge model](#branch--merge-model-you-stay-in-control)
 - [How "continuous & unattended" works](#how-continuous--unattended-works)
+- [Operating principles](#operating-principles)
 - [The `.self-improve/` knowledge base](#the-self-improve-knowledge-base)
 - [The specialist agents](#the-specialist-agents)
 - [Safety & guarantees](#safety--guarantees)
@@ -92,6 +93,18 @@ the backlog is exhausted, or you run `/improve-stop`. Configure cadence and runt
 
 ---
 
+## Operating principles
+
+Every change the loop proposes must satisfy these standards (see [PRINCIPLES.md](PRINCIPLES.md)) —
+they are part of the definition of done and the QA gate enforces what it can:
+
+1. **No emojis** — crisp iconography only (icon set / SVG in product UI; plain text symbols in docs).
+2. **Simplify for the user** — the simplest solution that fully solves the problem.
+3. **Remove redundancy** — delete duplicated/dead code and overlapping features; consolidate before adding.
+4. **Keep documentation current** — docs are updated in the same change; stale docs block GO.
+5. **Document & test against features/personas/journeys** — `features.md`, `personas.md`, and
+   `journeys.md` are always maintained, and every evaluation considers all three.
+
 ## The `.self-improve/` knowledge base
 
 Setup writes (and the loop maintains) a committed knowledge base so runs are resumable:
@@ -101,6 +114,7 @@ Setup writes (and the loop maintains) a committed knowledge base so runs are res
 | `config.json` | product, primary goal, commands, branch model, loop settings, QA gate, out-of-bounds |
 | `personas.md` | concrete, evidence-grounded personas |
 | `journeys.md` | prioritized, testable end-to-end user journeys (P0/P1/P2) |
+| `features.md` | living catalogue of every feature, mapped to personas/journeys |
 | `competitors.md` | competitive matrix + gaps to attack first |
 | `backlog.md` | prioritized improvement items (`SI-001`…) with acceptance criteria |
 | `staging-changelog.md` | every landed improvement + ship/hold checkbox + commit SHA |
@@ -175,6 +189,7 @@ Then, in the repo you want to improve:
 | `/improve-run` | Start/continue the autonomous, self-scheduling improvement loop |
 | `/improve-status` | Quick read-only progress snapshot |
 | `/improve-report` | Summary + ship/hold review of what landed on staging |
+| `/improve-recalibrate` | Refresh personas/journeys/features/competitors without a full re-setup |
 | `/improve-stop` | Stop the loop cleanly and cancel any scheduled re-arm |
 
 ---
