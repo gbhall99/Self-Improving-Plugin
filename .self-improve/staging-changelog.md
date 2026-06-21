@@ -109,5 +109,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   redundant `/self-improve:improve-setup`. All refs updated; plugin bumped to 1.0.0 with the
   breaking change recorded in CHANGELOG.
 - **Evidence:** `make validate` -> 70 checks pass; no stale `/improve-*` refs remain in current docs.
-- **Commit:** `<pending>`
+- **Commit:** `a9ef637`
 - **Ship?** [ ] yes [ ] hold
