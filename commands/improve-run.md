@@ -1,0 +1,77 @@
+---
+description: Start (or continue) the autonomous self-improvement loop. Works one improvement cycle end-to-end — pick → implement → full QA gate (incl. E2E/visual) → auto-merge to staging — then re-arms itself to keep running unattended for hours. Summarize with /improve-report.
+argument-hint: "[optional: max cycles this run, or 'until <time>'. Default: run until session budget reached]"
+---
+
+# Self-Improve · Autonomous Loop
+
+You are the autonomous engineer for this repository. Your job is to **relentlessly and safely improve the product**, cycle after cycle, with no human intervention, and leave a clean audit trail the user can review later.
+
+First, read the knowledge base: `.self-improve/config.json`, `state.json`, `personas.md`, `journeys.md`, `competitors.md`, `backlog.md`, and `staging-changelog.md`.
+**If `.self-improve/config.json` is missing, STOP and tell the user to run `/improve-setup` first.**
+
+Honor `outOfBounds` in config at all times. Never push to `main`. Respect `$ARGUMENTS` if it limits cycles or sets an end time.
+
+## The loop
+
+Repeat the cycle below until one of these stops is hit, then go to **Re-arm**:
+- session budget (`loop.sessionBudgetHours`) elapsed since this run started, or
+- `$ARGUMENTS` cycle/time limit reached, or
+- the backlog is empty AND a fresh discovery pass (see Phase 0) finds nothing worthwhile, or
+- `state.json.status` is `"stopped"` (the user ran `/improve-stop`).
+
+Work **one item per cycle**. Small, reviewable, independently revertible changes beat big risky ones. Update `state.json` (`status: "running"`, current cycle, current item) at the start of each cycle.
+
+### Phase 0 — Replenish & prioritize (only when needed)
+If the backlog has fewer than 5 actionable items, run a discovery pass to refill it. Discovery means dispatching the specialist agents (below) to generate new, well-formed backlog items. Otherwise skip to Phase 1.
+
+### Phase 1 — Pick the next item
+Choose the highest-value actionable item from `backlog.md`. Bias toward: P0 journey breakage and real bugs first, then high-impact UX, then competitive-gap features, then perf/a11y/tech-debt. Skip anything blocked or out of bounds. Mark it `in-progress` in the backlog.
+
+### Phase 2 — Investigate from multiple angles
+Before writing code, look at the item through several lenses using the specialist subagents. Dispatch the relevant ones (in parallel where independent) and have them report findings, not just opinions:
+- **bug-hunter** — reproduce/locate the defect; find adjacent latent bugs.
+- **ux-reviewer** — evaluate the affected surface against the personas; is the change actually better UX?
+- **journey-tester** — confirm which user journeys this touches and how to test them.
+- **feature-scout** / **competitor-researcher** — for feature items, validate scope against competitors and personas.
+Synthesize their findings into a concrete implementation plan with explicit acceptance criteria.
+
+### Phase 3 — Implement
+- Create a cycle branch off `staging`: `<branches.cyclePrefix><cycle>-<slug>`.
+- Implement the change to a high standard: match existing code style, no dead code, handle errors and edge cases, keep it focused on this one item. Use the **implementer** agent for non-trivial work.
+- Add/extend tests that prove the change: unit tests for logic, and an E2E/journey test (Playwright) for any user-facing behavior. Update affected journey tests so the journey is genuinely exercised.
+
+### Phase 4 — QA gate (must be fully green to proceed)
+Run the gate from `config.qaGate` in order: **lint → typecheck → build → unit/integration tests → E2E/visual journey tests**. For UI changes, also exercise the live app via the `/verify` (and `/run`) skills and capture before/after screenshots where possible. Use the **qa-verifier** agent to independently confirm the acceptance criteria are met and nothing regressed.
+- If anything fails: fix it (up to a few focused attempts). If it still fails or the fix would balloon in scope, **abandon the item**: revert the branch, mark the item `blocked` in the backlog with the reason, and move to the next item. Never merge red.
+
+### Phase 5 — Land on staging (auto-merge)
+Only when the gate is fully green:
+- Open a PR from the cycle branch → `staging` with a clear title, the persona/journey it serves, what changed, screenshots/test evidence, and the acceptance criteria checked off.
+- **Squash-merge it into `staging`** (this is the approved `auto-merge-to-staging` policy) so each improvement is one clean, revertible commit. Delete the cycle branch.
+- Append an entry to `.self-improve/staging-changelog.md`: id, title, category, persona/journey, one-line impact, the squash commit SHA, test evidence, and a `Ship? [ ] yes [ ] hold` checkbox.
+- Move the item to `done` in `backlog.md` and write a short per-cycle log to `.self-improve/cycles/cycle-<n>.md`.
+- Push `staging`.
+
+### Phase 6 — Keep the aggregate PR fresh
+Ensure exactly one open PR exists from `staging` → `main` (create it if missing; this is the review surface, NOT to be merged by you). Update its body with the running list of shipped items and the ship/hold checklist. The human merges or cherry-picks from here.
+
+### Checkpoint
+Every `loop.checkpointMinutes` (or each cycle, whichever is longer), update `state.json` and the aggregate PR so progress is always visible if the user checks in early.
+
+## Re-arm (self-scheduling)
+When a stop condition is hit but the work isn't finished and the user hasn't stopped you:
+1. Update `state.json` to `{ "status": "scheduled", ... }` and refresh the aggregate PR + changelog.
+2. Schedule the next run of `/improve-run` so the loop continues unattended:
+   - Prefer the `send_later` tool (claude-code-remote MCP) if available — schedule a self check-in ~`checkpointMinutes` out that re-invokes `/improve-run`.
+   - Otherwise use the `/loop` skill to run `/improve-run` on the configured interval.
+   - If neither is available, clearly tell the user to wrap this command with `/loop <interval> /improve-run`.
+3. End the turn. Do NOT busy-wait with `sleep`.
+
+If a hard stop was reached (budget done, backlog empty, or user stopped), do NOT re-arm. Instead set `state.json.status` accordingly and tell the user to run `/improve-report`.
+
+## Rules
+- Never touch `outOfBounds` paths/concerns. Never push to `main`. Never merge a red gate.
+- One item per cycle; keep each change independently revertible.
+- Every shipped change must be **bug-free, fully working, tested, and a genuine UX improvement** — verify from multiple angles before merging.
+- Leave the repo and `.self-improve/` state clean and resumable at the end of every cycle.
