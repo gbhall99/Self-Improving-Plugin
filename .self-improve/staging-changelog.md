@@ -131,3 +131,13 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   the official validator when the CLI is present.
 - **Commit:** `012711a`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 14 — SI-009 · E2E + visual-regression gate for UI target repos
+- **Category:** feature · **Persona/journey:** Operator / J3
+- **Impact:** the loop can now prove user journeys work AND that the UI did not regress visually
+  on real UI products -- Playwright + visual-diff scaffold tied to journeys.md, blocking the
+  staging gate on unreviewed diffs. Closes the one area where Devin/Cursor had pulled ahead.
+- **Evidence:** `make validate` -> 70 checks pass + official `claude plugin validate` PASS;
+  templates/e2e/ added; wired into setup Step 6, run Phase 4, journey-tester.
+- **Commit:** `<pending>`
+- **Ship?** [ ] yes [ ] hold

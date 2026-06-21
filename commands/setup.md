@@ -55,8 +55,8 @@ Synthesize Steps 1–4 into a single prioritized **improvement backlog** at `.se
 
 The loop must be able to prove every change works, including UI/UX.
 
-- Confirm tests/build can run. If the project has no E2E/visual testing and is a web/UI app, **scaffold Playwright** (config + a `tests/journeys/` folder + one smoke test per P0 journey + a screenshot baseline step). Keep it minimal and idiomatic to the repo; do not force it on non-UI projects.
-- Record exactly how to run the full **QA gate** (lint → typecheck → build → unit tests → E2E/visual) in config.
+- Confirm tests/build can run. If the project has no E2E/visual testing and is a web/UI app, **scaffold Playwright with visual regression** from `templates/e2e/` — adapt `playwright.config.example.ts` (base URL + the dev/start command as a `webServer`) and create one `tests/journeys/<journey>.spec` per P0 journey from `journey.example.spec.ts`, each walking the journey as the persona and asserting the real outcome **plus a `toHaveScreenshot` visual checkpoint**. Commit the baseline snapshots. Keep it minimal and idiomatic to the repo; do not force it on non-UI projects (libraries, CLIs, pure APIs).
+- Record exactly how to run the full **QA gate** (lint → typecheck → build → unit tests → E2E/visual) in config (`commands.e2e` and `e2e` in `qaGate` for UI repos).
 - If there is no obvious way to launch the app for verification, note it and prefer the `/verify` and `/run` skills at loop time.
 
 ## Step 7 — Write config & branch model

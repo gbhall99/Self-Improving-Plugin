@@ -20,4 +20,4 @@ changed or tested in isolation. Maturity: solid / rough / partial.
 | Competitor gap-tickets | Loop turns competitor capabilities into sourced backlog items | Reviewer | J2 | `agents/competitor-researcher.md` | rough |
 | Validation / QA gate | Validates manifests, command/agent frontmatter, generated state, and emoji ban; runs in CI, `make validate`, and pre-push hook | Maintainer, Gatekeeper | J6, J7 | `scripts/validate_plugin.py`, `Makefile`, `.githooks/`, `.github/workflows/` | solid |
 | Marketplace install | One-line install via plugin marketplace | all | J1 | `.claude-plugin/` | solid |
-| E2E + visual gate | Real Playwright + visual-regression gate tied to journeys (for UI target repos) | Operator | J3 | planned (SI-009) | partial |
+| E2E + visual gate | Playwright + visual-regression scaffold (`templates/e2e/`) tied to journeys; blocking gate for UI target repos | Operator | J3 | `templates/e2e/`, journey-tester, setup Step 6, run Phase 4 | rough |
