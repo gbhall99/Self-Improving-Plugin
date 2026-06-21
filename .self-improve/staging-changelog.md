@@ -62,5 +62,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   drift) without a full re-setup; diffs rather than clobbers and re-prioritizes the backlog so
   the loop keeps targeting what's true now.
 - **Evidence:** `make validate` -> 50 checks pass (new command picked up + frontmatter valid).
-- **Commit:** `<pending>`
+- **Commit:** `1c92256`
 - **Ship?** [ ] yes [ ] hold
