@@ -148,5 +148,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   templates/e2e/README.md) are now scanned for emojis.
 - **Evidence:** gap reproduced (subdir emoji passed before); after fix it fails exit 1;
   `make validate` -> 71 checks pass + official validate PASS.
-- **Commit:** `<pending>`
+- **Commit:** `b7aa8a0`
 - **Ship?** [ ] yes [ ] hold
