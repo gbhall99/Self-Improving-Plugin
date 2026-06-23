@@ -148,6 +148,12 @@ def validate_self_improve_state() -> None:
                     loop, ["sessionBudgetHours", "checkpointMinutes", "mergePolicy"],
                     ".self-improve/config.json loop",
                 )
+                focus = loop.get("focus")
+                if focus is not None and focus not in ("harden", "enhance", "balanced"):
+                    err(
+                        ".self-improve/config.json: loop.focus must be one of "
+                        "['balanced', 'enhance', 'harden']"
+                    )
             elif loop is not None:
                 err(".self-improve/config.json: 'loop' must be an object")
             qa = data.get("qaGate")

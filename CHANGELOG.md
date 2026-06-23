@@ -7,6 +7,10 @@ versioning is [SemVer](https://semver.org/) and tracks `.claude-plugin/plugin.js
 ## [Unreleased]
 
 ### Added
+- Focus modes to steer the loop: `/self-improve:harden` (bugs, security, perf, a11y, robustness,
+  tech-debt; no new features) and `/self-improve:enhance` (features and competitive gaps first),
+  plus a `harden|enhance|balanced` argument on `/self-improve:run` and a persistent `loop.focus`
+  default in config. The quality bar is unchanged in every mode.
 - Operating principle 6: prefer AI-centric, agentic solutions — wired into `/self-improve:run`,
   `/self-improve:setup`, and the feature-scout and implementer agents.
 - `make validate` also runs the official `claude plugin validate` when the CLI is present.

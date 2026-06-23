@@ -59,6 +59,16 @@ read the report, and merge what you like.
 /self-improve:stop      # stop cleanly anytime
 ```
 
+### Focus modes (harden vs. enhance)
+
+Steer what the loop works on without touching the quality bar:
+
+- `/self-improve:harden` — only bugs, security, performance, accessibility, robustness, test
+  coverage, and tech-debt. No new features.
+- `/self-improve:enhance` — prioritise new features and competitive gaps, then UX.
+- `/self-improve:run` — uses the saved focus (`loop.focus` in config, default `balanced`); you
+  can also pass it inline: `/self-improve:run harden`. A passed focus becomes the new default.
+
 ---
 
 ## Branch & merge model (you stay in control)
@@ -188,7 +198,9 @@ Then, in the repo you want to improve:
 | Command | What it does |
 |---|---|
 | `/self-improve:setup` | One-off: research personas & journeys, profile competitors, detect commands, scaffold E2E, seed backlog |
-| `/self-improve:run` | Start/continue the autonomous, self-scheduling improvement loop |
+| `/self-improve:run` | Start/continue the autonomous, self-scheduling improvement loop (accepts a focus: `harden` \| `enhance` \| `balanced`) |
+| `/self-improve:harden` | Start the loop in HARDEN focus — bugs, security, perf, a11y, robustness, tech-debt; no new features |
+| `/self-improve:enhance` | Start the loop in ENHANCE focus — new features and competitive gaps first |
 | `/self-improve:status` | Quick read-only progress snapshot |
 | `/self-improve:report` | Summary + ship/hold review of what landed on staging |
 | `/self-improve:recalibrate` | Refresh personas/journeys/features/competitors without a full re-setup |

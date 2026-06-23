@@ -80,6 +80,7 @@ Create `.self-improve/config.json` capturing everything the loop needs:
     "sessionBudgetHours": 6,
     "checkpointMinutes": 20,
     "mergePolicy": "auto-merge-to-staging",
+    "focus": "balanced",
     "guardrails": {
       "maxConsecutiveFailures": 3,
       "maxMergesPerHour": 6,

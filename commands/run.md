@@ -1,6 +1,6 @@
 ---
 description: Start (or continue) the autonomous self-improvement loop. Works one improvement cycle end-to-end — pick → implement → full QA gate (incl. E2E/visual) → auto-merge to staging — then re-arms itself to keep running unattended for hours. Summarize with /self-improve:report.
-argument-hint: "[optional: max cycles this run, or 'until <time>'. Default: run until session budget reached]"
+argument-hint: "[optional: a focus 'harden' | 'enhance' | 'balanced'; and/or max cycles or 'until <time>'. Default: saved focus + session budget]"
 ---
 
 # Self-Improve · Autonomous Loop
@@ -30,6 +30,16 @@ Read `loop.guardrails` from `config.json` and enforce it — this is what makes 
 - **Out-of-bounds is absolute:** never touch `outOfBounds` paths/concerns even if an item seems to require it — mark the item `blocked` instead.
 If `loop.guardrails` is absent, use the defaults above. A paused run is resumed only by the user (`/self-improve:run`), not by self-re-arm.
 
+## Focus mode
+Determine the focus for this run, in priority order: a focus word in `$ARGUMENTS` (`harden` | `enhance` | `balanced`) wins; otherwise use `loop.focus` from `config.json`; otherwise default `balanced`. If `$ARGUMENTS` set a focus, persist it as the new `loop.focus` default. State the active focus at the start of the run and record it in `state.json` (`focus`).
+
+The focus shapes Phase 0 discovery and Phase 1 selection/ordering:
+- **harden** — only hardening categories: `bug`, `perf`, `a11y`, `security`, `tech-debt`, test-coverage, and fixes to broken journeys. **Do not implement new features** (defer `feature` items, and any competitive-gap features, to the backlog). Lean on bug-hunter, ux-reviewer (a11y), qa-verifier, and the `/security-review` skill.
+- **enhance** — prioritise `feature` and competitive-gap items, then UX; still never ship broken work (a bug that blocks the feature is fixed as part of it), but routine tech-debt is deprioritised.
+- **balanced** (default) — the standard order: P0 journey breakage and real bugs first, then high-impact UX, then competitive-gap features, then perf/a11y/tech-debt.
+
+In every focus the QA gate and all six operating principles still apply; focus changes *what* is worked on, never the quality bar.
+
 ## The loop
 
 Repeat the cycle below until one of these stops is hit, then go to **Re-arm**:
@@ -41,10 +51,10 @@ Repeat the cycle below until one of these stops is hit, then go to **Re-arm**:
 Work **one item per cycle**. Small, reviewable, independently revertible changes beat big risky ones. Update `state.json` (`status: "running"`, current cycle, current item) at the start of each cycle.
 
 ### Phase 0 — Replenish & prioritize (only when needed)
-If the backlog has fewer than 5 actionable items, run a discovery pass to refill it. Discovery means dispatching the specialist agents (below) to generate new, well-formed backlog items. As part of discovery, dispatch **competitor-researcher** to **file fresh, sourced gap tickets** into `.self-improve/backlog.md` (it de-duplicates against existing items and gaps already shipped, caps new tickets per pass, and cites a real source for each) so the loop keeps closing the distance to competitors. Otherwise skip to Phase 1.
+If the backlog has fewer than 5 actionable items **in the current focus** (see Focus mode), run a discovery pass to refill it. Discovery means dispatching the specialist agents (below) to generate new, well-formed backlog items. In **harden** focus, dispatch bug-hunter, ux-reviewer (accessibility), and qa-verifier and prefer the `/security-review` skill — do not dispatch feature-scout. In **enhance** or **balanced** focus, also dispatch **feature-scout** and **competitor-researcher** to **file fresh, sourced gap tickets** into `.self-improve/backlog.md` (de-duplicated against existing items and gaps already shipped, capped per pass, each citing a real source) so the loop keeps closing the distance to competitors. Otherwise skip to Phase 1.
 
 ### Phase 1 — Pick the next item
-Choose the highest-value actionable item from `backlog.md`. Bias toward: P0 journey breakage and real bugs first, then high-impact UX, then competitive-gap features, then perf/a11y/tech-debt. Skip anything blocked or out of bounds. Mark it `in-progress` in the backlog.
+Choose the highest-value actionable item from `backlog.md`, filtered and ordered by the **current focus** (see Focus mode). Skip anything blocked or out of bounds. Mark it `in-progress` in the backlog.
 
 ### Phase 2 — Investigate from multiple angles
 First check `.self-improve/knowledge/` for an existing **playbook** covering this area or a similar past fix — reuse its repro and verification steps instead of re-deriving them. Then look at the item through several lenses using the specialist subagents. Dispatch the relevant ones (in parallel where independent) and have them report findings, not just opinions:
