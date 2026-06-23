@@ -159,5 +159,5 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   every mode. Also fixed command paths in features.md corrupted by the v1.0.0 rename sed.
 - **Evidence:** `make validate` -> 75 checks + official `claude plugin validate` PASS; reinstall
   shows 8 commands load (enhance, harden, + the original six).
-- **Commit:** `<pending>`
+- **Commit:** `d8368bb`
 - **Ship?** [ ] yes [ ] hold
