@@ -150,3 +150,14 @@ decision on the `staging → main` PR. Tick `Ship?` to mark what to keep.
   `make validate` -> 71 checks pass + official validate PASS.
 - **Commit:** `b7aa8a0`
 - **Ship?** [ ] yes [ ] hold
+
+## Cycle 16 — SI-016 · Focus modes (harden / enhance / balanced)
+- **Category:** feature (+ doc bug fix) · **Persona/journey:** Operator, Gatekeeper / J1, J3
+- **Impact:** you can now steer the loop -- `/self-improve:harden` (bugs/security/perf/a11y/
+  robustness/tech-debt, no new features), `/self-improve:enhance` (features/competitive gaps
+  first), or a focus arg on run, with a persistent `loop.focus` default. Quality bar unchanged in
+  every mode. Also fixed command paths in features.md corrupted by the v1.0.0 rename sed.
+- **Evidence:** `make validate` -> 75 checks + official `claude plugin validate` PASS; reinstall
+  shows 8 commands load (enhance, harden, + the original six).
+- **Commit:** `d8368bb`
+- **Ship?** [ ] yes [ ] hold
